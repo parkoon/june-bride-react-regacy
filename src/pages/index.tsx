@@ -1,11 +1,12 @@
 import React, { FunctionComponent } from 'react'
 import { Link } from 'gatsby'
+import Layout from '../components/Layout'
 
 const IndexPage: FunctionComponent = function () {
   return (
-    <div>
+    <Layout>
       <Link to="/info/">To Info</Link>
-    </div>
+    </Layout>
   )
 }
 
