@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
 
 const Text = styled.div`
@@ -35,15 +34,3 @@ const InfoPage: FunctionComponent<InfoPageProps> = function ({
 }
 
 export default InfoPage
-
-export const metadataQuery = graphql`
-  {
-    site {
-      siteMetadata {
-        title
-        description
-        author
-      }
-    }
-  }
-`
