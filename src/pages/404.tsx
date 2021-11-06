@@ -1,5 +1,5 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react'
 
-const NotFound: FunctionComponent = () => <div>404</div>;
+const NotFound: FunctionComponent = () => <div>404</div>
 
-export default NotFound;
+export default NotFound
