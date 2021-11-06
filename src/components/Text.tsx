@@ -1,7 +1,5 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent } from 'react';
 
-const Text: FunctionComponent = function ({ children }) {
-  return <div>{children}</div>
-}
+const Text: FunctionComponent = ({ children }) => <div>{children}</div>;
 
-export default Text
+export default Text;

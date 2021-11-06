@@ -1,16 +1,21 @@
-import { FunctionComponent } from 'react'
-import { Helmet } from 'react-helmet'
-import { useSiteMetadata } from '../hooks/useSiteMetadata'
+import { FunctionComponent } from 'react';
+import { Helmet } from 'react-helmet';
+import { useSiteMetadata } from '../hooks/useSiteMetadata';
 
 const Head: FunctionComponent = () => {
-  const { title, description, image, siteUrl, author } = useSiteMetadata()
+  const {
+    title, description, image, siteUrl, author,
+  } = useSiteMetadata();
 
   return (
     <Helmet>
       <html lang="ko" />
       <title>{title}</title>
       <meta name="description" content={description} />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+      />
       <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
 
       <meta property="og:type" content="website" />
@@ -27,7 +32,7 @@ const Head: FunctionComponent = () => {
       <meta name="twitter:site" content={author} />
       <meta name="twitter:creator" content={author} />
     </Helmet>
-  )
-}
+  );
+};
 
-export default Head
+export default Head;
