@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
 const Head: FunctionComponent = () => {
-  const { title, description, image, url, author } = useSiteMetadata()
+  const { title, description, image, siteUrl, author } = useSiteMetadata()
 
   return (
     <Helmet>
@@ -17,7 +17,7 @@ const Head: FunctionComponent = () => {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
-      <meta property="og:url" content={url} />
+      <meta property="og:url" content={siteUrl} />
       <meta property="og:site_name" content={title} />
 
       <meta name="twitter:card" content="summary" />

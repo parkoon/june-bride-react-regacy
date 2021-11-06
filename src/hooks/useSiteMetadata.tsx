@@ -6,7 +6,7 @@ type Meta = {
       title: string
       description: string
       author: string
-      url: string
+      siteUrl: string
       image: string
     }
   }
@@ -20,7 +20,7 @@ export const useSiteMetadata = () => {
             title
             description
             author
-            url
+            siteUrl
             image
           }
         }
