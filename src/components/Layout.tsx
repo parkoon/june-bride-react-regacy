@@ -2,10 +2,10 @@ import React, { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
 import GlobalStyle from './GlobalStyle'
 import Head from './Head'
+import AppBar from './AppBar'
 
 const Wrapper = styled.div`
     min-height: 100vh;
-    background: rgba(0, 0, 0, 0.05);
 
     @media (min-width: 1024px) {
         width: 375px;
@@ -20,6 +20,7 @@ const Layout: FunctionComponent = ({ children }) => (
     <Wrapper>
         <Head />
         <GlobalStyle />
+        <AppBar />
         {children}
     </Wrapper>
 )
