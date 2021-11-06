@@ -1,38 +1,9 @@
-import { graphql, useStaticQuery } from 'gatsby'
 import { FunctionComponent } from 'react'
 import { Helmet } from 'react-helmet'
+import { useSiteMetadata } from '../hooks/useSiteMetadata'
 
-type MetaData = {
-  site: {
-    siteMetadata: {
-      title: string
-      description: string
-      author: string
-      url: string
-      image: string
-    }
-  }
-}
 const Head: FunctionComponent = () => {
-  const {
-    site: {
-      siteMetadata: { title, description, author, url, image },
-    },
-  } = useStaticQuery<MetaData>(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-            url
-            image
-          }
-        }
-      }
-    `,
-  )
+  const { title, description, image, url, author } = useSiteMetadata()
 
   return (
     <Helmet>
