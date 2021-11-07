@@ -9,7 +9,8 @@ module.exports = {
     },
     plugins: [
         'gatsby-plugin-react-helmet',
-        'gatsby-plugin-image',
+        'gatsby-plugin-emotion',
+        'gatsby-plugin-sitemap',
         {
             resolve: 'gatsby-source-filesystem',
             options: {
@@ -17,9 +18,6 @@ module.exports = {
                 path: `${__dirname}/src/assets/images`,
             },
         },
-        'gatsby-transformer-sharp',
-        'gatsby-plugin-sharp',
-        'gatsby-plugin-emotion',
         {
             resolve: 'gatsby-plugin-canonical-urls',
             options: {
@@ -27,7 +25,6 @@ module.exports = {
                 stripQueryString: true,
             },
         },
-        'gatsby-plugin-sitemap',
         {
             resolve: 'gatsby-plugin-robots-txt',
             options: {
