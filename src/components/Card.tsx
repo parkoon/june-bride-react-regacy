@@ -6,7 +6,7 @@ import colors from '../styles/colors'
 const Wrapper = styled.div`
     display: flex;
     align-items: center;
-    gap: 12px; ;
+    gap: 12px;
 `
 const Image = styled.img`
     width: 62px;
