@@ -6,10 +6,8 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
 
-    position: fixed;
+    position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
 
     background: #fff;
 
@@ -22,22 +20,15 @@ const Title = styled.h1`
     font-weight: bold;
 `
 
-const Padding = styled.div`
-    height: 64px;
-`
-
 const AppBar: FunctionComponent = () => {
     const boxShadow = useBoxShadow()
 
     return (
-        <div>
-            <Wrapper style={{ ...boxShadow }}>
-                <Title>청첩장</Title>
+        <Wrapper style={{ ...boxShadow }}>
+            <Title>청첩장</Title>
 
-                {/* TODO. 어떤 아이콘이 필요할까? */}
-            </Wrapper>
-            <Padding />
-        </div>
+            {/* TODO. 어떤 아이콘이 필요할까? */}
+        </Wrapper>
     )
 }
 
