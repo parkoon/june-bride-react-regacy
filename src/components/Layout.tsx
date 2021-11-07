@@ -16,12 +16,17 @@ const Wrapper = styled.div`
     }
 `
 
+const Content = styled.main`
+    padding: 0 24px;
+    padding-top: 8px;
+`
+
 const Layout: FunctionComponent = ({ children }) => (
     <Wrapper>
         <Head />
         <GlobalStyle />
         <AppBar />
-        {children}
+        <Content>{children}</Content>
     </Wrapper>
 )
 
