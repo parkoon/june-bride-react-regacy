@@ -13,6 +13,8 @@ const Wrapper = styled.div`
 
     height: 64px;
     padding: 0 24px;
+
+    z-index: 10;
 `
 
 const Title = styled.h1`
