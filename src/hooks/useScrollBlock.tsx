@@ -1,11 +1,9 @@
 import { useRef } from 'react'
 
-const safeDocument: Document = document
-
 export const useScrollBlock = (): [() => void, () => void] => {
     const scrollBlocked = useRef(false)
-    const html = safeDocument.documentElement
-    const { body } = safeDocument
+    const html = document.documentElement
+    const { body } = document
 
     const blockScroll = (): void => {
         if (!document || !body || !body.style || scrollBlocked.current) return
