@@ -23,13 +23,19 @@ const Meta = styled.div`
     gap: 4px;
 `
 
-type CardProps = {
+type ProfileCardProps = {
     title: string
     imageSrc: string
     caption?: string
+    onClick?: () => void
 }
-const Card: FunctionComponent<CardProps> = ({ title, imageSrc, caption }) => (
-    <Wrapper>
+const ProfileCard: FunctionComponent<ProfileCardProps> = ({
+    title,
+    imageSrc,
+    caption,
+    onClick,
+}) => (
+    <Wrapper onClick={onClick}>
         <Image src={imageSrc} alt={title} />
 
         <Meta>
@@ -39,4 +45,4 @@ const Card: FunctionComponent<CardProps> = ({ title, imageSrc, caption }) => (
     </Wrapper>
 )
 
-export default Card
+export default ProfileCard
