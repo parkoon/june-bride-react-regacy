@@ -5,6 +5,7 @@ import ProfileCard from '../components/ProfileCard'
 import Layout from '../components/Layout'
 import ProfileModal from '../components/ProfileModal'
 import Section from '../components/Section'
+import BottomSheet from '../components/BottomSheet'
 
 const FakeBox = styled.div`
     height: 500px;
@@ -30,7 +31,14 @@ const IndexPage: FunctionComponent = () => {
                 />
             </Section>
 
-            {open && <ProfileModal onClose={() => setOpen(false)} />}
+            {open && (
+                <ProfileModal
+                    onClose={() => {
+                        setOpen(false)
+                    }}
+                />
+            )}
+            <BottomSheet />
 
             <FakeBox />
             <FakeBox />
