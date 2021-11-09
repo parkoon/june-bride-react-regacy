@@ -20,8 +20,6 @@ export const useScrollBlock = (): [() => void, () => void] => {
          * 2. Fixes a bug in desktop Safari where `overflowY` does not prevent
          *    scroll if an `overflow-x` style is also applied to the body.
          */
-        html.style.position = 'relative' /* [1] */
-        html.style.overflow = 'hidden' /* [2] */
         body.style.position = 'relative' /* [1] */
         body.style.overflow = 'hidden' /* [2] */
         body.style.paddingRight = `${bodyPaddingRight + scrollBarWidth}px`
@@ -32,8 +30,6 @@ export const useScrollBlock = (): [() => void, () => void] => {
     const allowScroll = (): void => {
         if (!body || !body.style || !scrollBlocked.current) return
 
-        html.style.position = ''
-        html.style.overflow = ''
         body.style.position = ''
         body.style.overflow = ''
         body.style.paddingRight = ''
