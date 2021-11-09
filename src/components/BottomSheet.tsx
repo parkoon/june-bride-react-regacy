@@ -54,7 +54,13 @@ const BottomSheet: FunctionComponent = ({ children }) => {
     const bottomSheetHeight = window.innerHeight - MIN_Y
 
     return (
-        <Wrapper ref={sheet} style={{ height: bottomSheetHeight }}>
+        <Wrapper
+            ref={sheet}
+            style={{
+                height: bottomSheetHeight,
+                transform: `translateY(${MAX_Y - MIN_Y}px)`,
+            }}
+        >
             <Header>
                 <Handle />
             </Header>
