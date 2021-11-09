@@ -1,7 +1,8 @@
-import styled from '@emotion/styled'
-import { FunctionComponent, useEffect, useRef } from 'react'
 import { keyframes } from '@emotion/react'
-import { MdClose, MdPhone, MdCreditCard } from 'react-icons/md'
+import styled from '@emotion/styled'
+import { FunctionComponent, useEffect } from 'react'
+import { MdClose, MdCreditCard, MdPhone } from 'react-icons/md'
+import useProfileModalDrag from '../hooks/useProfileModalDrag'
 import { useScrollBlock } from '../hooks/useScrollBlock'
 import colors from '../styles/colors'
 
@@ -28,7 +29,7 @@ const Wrapper = styled.div`
 
     z-index: 15;
 
-    transition: transform 0.25s ease;
+    /* transition: transform 0.25s ease; */
     animation: ${up} 0.25s ease;
 `
 
@@ -107,57 +108,64 @@ const IconWithText = styled.div`
     }
 `
 
+const Overlay = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #000;
+    opacity: 0;
+
+    height: 100vh;
+
+    z-index: 10;
+`
+
 type ProfileModalProps = {
     onClose?: () => void
 }
 const ProfileModal: FunctionComponent<ProfileModalProps> = ({ onClose }) => {
     const [blockScroll, allowScroll] = useScrollBlock()
 
-    const wrapperRef = useRef<HTMLDivElement>(null)
+    const { modal, overlay, forceClose } = useProfileModalDrag({ onClose })
 
     useEffect(() => {
         blockScroll()
-
         return () => allowScroll()
     }, [])
 
     return (
-        <Wrapper ref={wrapperRef} onTransitionEnd={onClose}>
-            <BackgroundImage
-                src="https://i.picsum.photos/id/703/375/700.jpg?hmac=g5X7J18scSkBJtPe4MkH8zeCwFIpPYShGnTeJO0QmMU"
-                alt="background"
-            />
+        <div>
+            <Overlay ref={overlay} />
+            <Wrapper ref={modal}>
+                <BackgroundImage
+                    src="https://i.picsum.photos/id/703/375/700.jpg?hmac=g5X7J18scSkBJtPe4MkH8zeCwFIpPYShGnTeJO0QmMU"
+                    alt="background"
+                />
 
-            <Header>
-                <button
-                    type="button"
-                    onClick={() => {
-                        if (wrapperRef.current) {
-                            wrapperRef.current.style.transform =
-                                'translateY(100%)'
-                        }
-                    }}
-                >
-                    <MdClose size={30} color={colors.lightGray} />
-                </button>
-            </Header>
+                <Header>
+                    <button type="button" onClick={forceClose}>
+                        <MdClose size={30} color={colors.lightGray} />
+                    </button>
+                </Header>
 
-            <Profile>
-                <ProfileImage src="https://i.picsum.photos/id/521/64/64.jpg?hmac=El3YAPulvfET2lz8UumlzSsnFjgjOtwKrL2r5i7zUho" />
-                <span>신랑 박종혁</span>
-            </Profile>
+                <Profile>
+                    <ProfileImage src="https://i.picsum.photos/id/521/64/64.jpg?hmac=El3YAPulvfET2lz8UumlzSsnFjgjOtwKrL2r5i7zUho" />
+                    <span>신랑 박종혁</span>
+                </Profile>
 
-            <Footer>
-                <IconWithText>
-                    <MdPhone size={35} color="#fff" />
-                    <div>전화하기</div>
-                </IconWithText>
-                <IconWithText>
-                    <MdCreditCard size={35} color="#fff" />
-                    <div>입금하기</div>
-                </IconWithText>
-            </Footer>
-        </Wrapper>
+                <Footer>
+                    <IconWithText>
+                        <MdPhone size={35} color="#fff" />
+                        <div>전화하기</div>
+                    </IconWithText>
+                    <IconWithText>
+                        <MdCreditCard size={35} color="#fff" />
+                        <div>입금하기</div>
+                    </IconWithText>
+                </Footer>
+            </Wrapper>
+        </div>
     )
 }
 
