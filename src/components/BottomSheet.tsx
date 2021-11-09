@@ -47,11 +47,12 @@ const Handle = styled.div`
 
 const BottomSheet: FunctionComponent = ({ children }) => {
     const MIN_Y = 120
-    const MAX_Y = window.innerHeight - 64
+    const MAX_Y = typeof window === 'undefined' ? 0 : window.innerHeight - 64
 
     const { sheet, content } = useBottomSheet({ MIN_Y, MAX_Y })
 
-    const bottomSheetHeight = window.innerHeight - MIN_Y
+    const bottomSheetHeight =
+        typeof window === 'undefined' ? 0 : window.innerHeight - MIN_Y
 
     return (
         <Wrapper
