@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import Banner from '../components/Banner'
 import ProfileCard from '../components/ProfileCard'
 import Layout from '../components/Layout'
@@ -13,6 +13,10 @@ const FakeBox = styled.div`
 `
 const IndexPage: FunctionComponent = () => {
     const [open, setOpen] = useState(false)
+
+    useEffect(() => {
+        window.scrollTo(0, 1)
+    }, [])
     return (
         <Layout>
             <Banner />
