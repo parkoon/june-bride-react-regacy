@@ -1,12 +1,12 @@
 import styled from '@emotion/styled'
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import Banner from '../components/Banner'
-import ProfileCard from '../components/ProfileCard'
-import Layout from '../components/Layout'
-import ProfileModal from '../components/ProfileModal'
-import Section from '../components/Section'
 import BottomSheet from '../components/BottomSheet'
+import Layout from '../components/Layout'
+import ProfileCard from '../components/ProfileCard'
+import ProfileModal from '../components/ProfileModal'
 import RippleWrapper from '../components/RippleWrapper'
+import Section from '../components/Section'
 
 const FakeBox = styled.div`
     height: 500px;
@@ -14,9 +14,6 @@ const FakeBox = styled.div`
 const IndexPage: FunctionComponent = () => {
     const [open, setOpen] = useState(false)
 
-    useEffect(() => {
-        window.scrollTo(0, 1)
-    }, [])
     return (
         <Layout>
             <Banner />
