@@ -38,7 +38,8 @@ type RippleMetrics = {
     top: number
     width: number
     height: number
-    updated: number
+    // Null 의 경우, 처음 컴포넌트가 렌더링 되었을 떄
+    updated: number | null
 }
 
 const RippleWrapper: FunctionComponent<RippleWrapperProps> = ({
@@ -52,7 +53,7 @@ const RippleWrapper: FunctionComponent<RippleWrapperProps> = ({
         top: 0,
         width: 0,
         height: 0,
-        updated: Date.now(),
+        updated: null,
     })
 
     const createRipple = (event: MouseEvent) => {
@@ -73,13 +74,16 @@ const RippleWrapper: FunctionComponent<RippleWrapperProps> = ({
     return (
         <Wrapper ref={wrapperRef} onClick={createRipple}>
             {children}
-            <StyledRipple
-                key={metrics.updated}
-                style={{
-                    ...metrics,
-                }}
-                onAnimationEnd={afterEffect}
-            />
+
+            {metrics.updated && (
+                <StyledRipple
+                    key={metrics.updated}
+                    style={{
+                        ...metrics,
+                    }}
+                    onAnimationEnd={afterEffect}
+                />
+            )}
         </Wrapper>
     )
 }
