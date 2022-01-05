@@ -1,22 +1,12 @@
-import styled from '@emotion/styled'
-import React, { FunctionComponent, useState } from 'react'
-import Banner from '../components/Banner'
-import BottomSheet from '../components/BottomSheet'
+import React, { FunctionComponent } from 'react'
 import Layout from '../components/Layout'
-import ProfileCard from '../components/ProfileCard'
-import ProfileModal from '../components/ProfileModal'
-import RippleWrapper from '../components/RippleWrapper'
-import Section from '../components/Section'
+import Welcome from '../components/Welcome/Welcome'
 
-const FakeBox = styled.div`
-    height: 500px;
-`
 const IndexPage: FunctionComponent = () => {
-    const [open, setOpen] = useState(false)
-
     return (
         <Layout>
-            <Banner />
+            <Welcome />
+            {/* <Banner />
             <Section title="신랑 프로필">
                 <RippleWrapper afterEffect={() => setOpen(true)}>
                     <ProfileCard
@@ -36,6 +26,9 @@ const IndexPage: FunctionComponent = () => {
                 </RippleWrapper>
             </Section>
 
+            <Section title="채팅" />
+
+
             {open && (
                 <ProfileModal
                     onClose={() => {
@@ -43,7 +36,6 @@ const IndexPage: FunctionComponent = () => {
                     }}
                 />
             )}
-            <BottomSheet />
 
             <FakeBox />
             <FakeBox />
@@ -52,7 +44,7 @@ const IndexPage: FunctionComponent = () => {
             <FakeBox />
             <FakeBox />
             <FakeBox />
-            <FakeBox />
+            <FakeBox /> */}
         </Layout>
     )
 }

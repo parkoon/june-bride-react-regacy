@@ -17,15 +17,15 @@ const Wrapper = styled.div`
 `
 
 const Content = styled.main`
-    padding: 0 24px;
-    padding-top: 8px;
+    /* padding: 0 24px; */
+    /* padding-top: 8px; */
 `
 
 const Layout: FunctionComponent = ({ children }) => (
     <Wrapper>
         <Head />
         <GlobalStyle />
-        <AppBar />
+        {/* <AppBar /> */}
         <Content>{children}</Content>
     </Wrapper>
 )
