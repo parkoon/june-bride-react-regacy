@@ -7,13 +7,13 @@ import AppBar from './AppBar'
 const Wrapper = styled.div`
     min-height: 100vh;
 
-    @media (min-width: 1024px) {
+    /* @media (min-width: 1024px) {
         width: 375px;
         margin: 0 auto;
         border: 1px solid gray;
         border-top: none;
         border-bottom: none;
-    }
+    } */
 `
 
 const Content = styled.main`
