@@ -4,7 +4,6 @@ import styled from '@emotion/styled'
 const Wrapper = styled.h1<{ loaded: boolean; posRight: boolean }>`
     width: 100vw;
     height: 100vh;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,8 +11,8 @@ const Wrapper = styled.h1<{ loaded: boolean; posRight: boolean }>`
     text-transform: uppercase;
     font-size: 72px;
     opacity: 0;
-    font-weight: bold;
-    transition: transform 0.7s;
+
+    color: #dfe6e9;
 
     ${({ loaded }) =>
         loaded &&
@@ -26,6 +25,8 @@ const Wrapper = styled.h1<{ loaded: boolean; posRight: boolean }>`
         css`
             transform: translateX(50%);
         `}
+    font-weight: bold;
+    transition: 0.3s;
 `
 
 type Props = {

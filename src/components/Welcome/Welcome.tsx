@@ -4,11 +4,12 @@ import { useEffect, useState } from 'react'
 import WelcomeMessage from './WelcomeMessage'
 import ScrollDownAnimation from './ScrollDownAnimation'
 import useScrollTopEffect from '../../hooks/useIsScrollTop'
+import Loading from './Loading'
 
 const Wrapper = styled.section<{ loaded: boolean; full: boolean }>`
     height: calc(100vh);
     width: 100vw;
-    background: beige;
+    background: #000;
 
     ${({ loaded }) =>
         loaded &&
@@ -24,7 +25,7 @@ const Wrapper = styled.section<{ loaded: boolean; full: boolean }>`
     transition: 0.7s;
 `
 
-const FAKE_LOADING_TIME = 2 * 1000
+const FAKE_LOADING_TIME = 3.5 * 1000
 function Welcome() {
     const [loaded, setLoaded] = useState(false)
 
@@ -40,7 +41,7 @@ function Welcome() {
 
     return (
         <Wrapper loaded={loaded} full={!isScrollTop}>
-            {!loaded && '로딩애니매이션'}
+            {!loaded && <Loading />}
             <WelcomeMessage loaded={loaded} posRight={!isScrollTop} />
             <ScrollDownAnimation show={showArrowAnimation} />
         </Wrapper>
