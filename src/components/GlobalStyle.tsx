@@ -37,6 +37,10 @@ const defaultStyle = css`
         font: inherit;
         line-height: normal;
     }
+
+    p {
+        line-height: 1.2;
+    }
 `
 
 const GlobalStyle: FunctionComponent = () => <Global styles={defaultStyle} />

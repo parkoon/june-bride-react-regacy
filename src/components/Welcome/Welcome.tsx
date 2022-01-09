@@ -11,6 +11,8 @@ const Wrapper = styled.section<{ loaded: boolean; full: boolean }>`
     width: 100vw;
     background: #000;
 
+    color: #fff;
+
     ${({ loaded }) =>
         loaded &&
         css`

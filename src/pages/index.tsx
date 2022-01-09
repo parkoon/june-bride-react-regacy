@@ -3,6 +3,8 @@ import React, { FunctionComponent } from 'react'
 import Layout from '../components/Layout'
 import Welcome from '../components/Welcome/Welcome'
 import WeddingBanner from '../components/WeddingBanner'
+import Greeting from '../components/Welcome/Greeting'
+import ImageGallery from '../components/ImageGallery'
 
 const FakeBox = styled.div`
     height: 500px;
@@ -12,7 +14,10 @@ const IndexPage: FunctionComponent = () => {
         <Layout>
             <Welcome />
 
+            <Greeting />
             <WeddingBanner />
+
+            <ImageGallery />
             <FakeBox />
             <FakeBox />
             <FakeBox />
