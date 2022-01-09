@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import React, { FunctionComponent } from 'react'
 import Layout from '../components/Layout'
 import Welcome from '../components/Welcome/Welcome'
+import WeddingBanner from '../components/WeddingBanner'
 
 const FakeBox = styled.div`
     height: 500px;
@@ -11,6 +12,7 @@ const IndexPage: FunctionComponent = () => {
         <Layout>
             <Welcome />
 
+            <WeddingBanner />
             <FakeBox />
             <FakeBox />
             <FakeBox />
