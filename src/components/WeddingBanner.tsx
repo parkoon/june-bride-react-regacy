@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import React from 'react'
 
 const Wrapper = styled.div`
-    height: 120px;
+    height: 170px;
 
     > img {
         width: 100%;
