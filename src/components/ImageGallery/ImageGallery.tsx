@@ -6,6 +6,8 @@ import 'slick-carousel/slick/slick-theme.css'
 
 import styled from '@emotion/styled'
 import SelectedImage from './SelectedImage'
+import Paragraph from '../Typography/Paragraph'
+import Heading2 from '../Typography/Heading2'
 
 const images = [
     'https://cdn.pixabay.com/photo/2017/08/31/11/55/wedding-2700495_960_720.jpg',
@@ -24,14 +26,6 @@ const settings: Settings = {
 
 const Wrapper = styled.div`
     padding: 20px;
-
-    h2 {
-        font-size: 24px;
-        font-weight: bold;
-        line-height: 1.2;
-
-        margin-bottom: 12px;
-    }
 `
 
 function ImageGallery() {
@@ -39,10 +33,12 @@ function ImageGallery() {
 
     return (
         <Wrapper>
-            <h2>
-                사진
-                <br /> 갤러리.
-            </h2>
+            <Heading2>Photos.</Heading2>
+
+            <Paragraph>
+                ipsum dolorem atque aspernatur quisquam dignissimos. Quibusdam,
+                nam!
+            </Paragraph>
             <SelectedImage src={selectedImageSrc} />
             <Slider {...settings}>
                 {images.map((src) => (
