@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
 import React, { FunctionComponent } from 'react'
+import ImageGallery from '../components/ImageGallery'
 import Layout from '../components/Layout'
-import Welcome from '../components/Welcome/Welcome'
 import WeddingBanner from '../components/WeddingBanner'
 import Greeting from '../components/Welcome/Greeting'
-import ImageGallery from '../components/ImageGallery'
+import Welcome from '../components/Welcome/Welcome'
 
 const FakeBox = styled.div`
     height: 500px;
@@ -19,8 +19,7 @@ const IndexPage: FunctionComponent = () => {
 
             <ImageGallery />
             <FakeBox />
-            <FakeBox />
-            <FakeBox />
+
             {/* <Banner />
             <Section title="신랑 프로필">
                 <RippleWrapper afterEffect={() => setOpen(true)}>

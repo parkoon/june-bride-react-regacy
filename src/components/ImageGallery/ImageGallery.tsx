@@ -8,6 +8,7 @@ import styled from '@emotion/styled'
 import SelectedImage from './SelectedImage'
 import Paragraph from '../Typography/Paragraph'
 import Heading2 from '../Typography/Heading2'
+import ImageGalleryModal from './ImageGalleryModal'
 
 const images = [
     'https://cdn.pixabay.com/photo/2017/08/31/11/55/wedding-2700495_960_720.jpg',
@@ -31,6 +32,8 @@ const Wrapper = styled.div`
 function ImageGallery() {
     const [selectedImageSrc, setSelectedImageSrc] = useState(images[0])
 
+    const [openModal, setOpenModal] = useState(false)
+
     return (
         <Wrapper>
             <Heading2>Photos.</Heading2>
@@ -39,7 +42,10 @@ function ImageGallery() {
                 ipsum dolorem atque aspernatur quisquam dignissimos. Quibusdam,
                 nam!
             </Paragraph>
-            <SelectedImage src={selectedImageSrc} />
+            <SelectedImage
+                src={selectedImageSrc}
+                onClick={() => setOpenModal(true)}
+            />
             <Slider {...settings}>
                 {images.map((src) => (
                     <img
@@ -52,6 +58,10 @@ function ImageGallery() {
                     />
                 ))}
             </Slider>
+
+            {openModal && (
+                <ImageGalleryModal onClose={() => setOpenModal(false)} />
+            )}
         </Wrapper>
     )
 }

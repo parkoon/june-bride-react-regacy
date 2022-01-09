@@ -24,8 +24,9 @@ const ImageWrapper = styled.div`
 
 type Props = {
     src: string
+    onClick(): void
 }
-function SelectedImage({ src }: Props) {
+function SelectedImage({ src, onClick }: Props) {
     const animationRef = useRef<LottieLike>(null)
 
     const [liked, setLiked] = useState<string | null>(null)
@@ -34,7 +35,12 @@ function SelectedImage({ src }: Props) {
 
     return (
         <ImageWrapper>
-            <img src={src} alt="selected" />
+            <img
+                role="presentation"
+                src={src}
+                alt="selected"
+                onClick={onClick}
+            />
             <LikeIcon
                 size={25}
                 onClick={() => {
