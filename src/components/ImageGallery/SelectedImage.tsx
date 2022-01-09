@@ -28,7 +28,7 @@ type Props = {
 function SelectedImage({ src }: Props) {
     const animationRef = useRef<LottieLike>(null)
 
-    const [liked, setLiked] = useState(false)
+    const [liked, setLiked] = useState<string | null>(null)
 
     const LikeIcon = liked ? MdFavorite : MdFavoriteBorder
 
@@ -38,14 +38,10 @@ function SelectedImage({ src }: Props) {
             <LikeIcon
                 size={25}
                 onClick={() => {
-                    if (animationRef.current && !liked) {
-                        animationRef.current?.play()
-                    }
-
-                    setLiked((prev) => !prev)
+                    setLiked(liked ? null : new Date().toTimeString())
                 }}
             />
-            <Like ref={animationRef} />
+            {liked && <Like ref={animationRef} key={liked} />}
         </ImageWrapper>
     )
 }

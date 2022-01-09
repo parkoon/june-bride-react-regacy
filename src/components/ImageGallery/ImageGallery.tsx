@@ -50,7 +50,9 @@ function ImageGallery() {
                         role="presentation"
                         src={src}
                         alt="gallery"
-                        onClick={() => setSelectedImageSrc(src)}
+                        onClick={() => {
+                            setSelectedImageSrc(src)
+                        }}
                     />
                 ))}
             </Slider>

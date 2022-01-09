@@ -9,7 +9,7 @@ import styled from '@emotion/styled'
 import animationData from '../../assets/lottie/like.json'
 
 const Wrapper = styled.div`
-    height: 100%;
+    /* height: 100%; */
 
     position: fixed;
 
@@ -46,13 +46,14 @@ const Like = forwardRef<LottieLike>((_, ref) => {
             const animation = lottie.loadAnimation({
                 loop: false,
                 container: lottieRef.current,
-                autoplay: false,
+                autoplay: true,
                 animationData,
                 renderer: 'svg',
             })
 
             animation.addEventListener('complete', () => {
                 animation.stop()
+                animation.destroy()
             })
 
             animationRef.current = animation
