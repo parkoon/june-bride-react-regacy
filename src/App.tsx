@@ -1,9 +1,9 @@
 import ImageGallery from './components/ImageGallery'
 import Layout from './components/Layout'
+import WayToCome from './components/WayToCome/WayToCome'
 import WeddingBanner from './components/WeddingBanner'
 import Greeting from './components/Welcome/Greeting'
 import Welcome from './components/Welcome/Welcome'
-import Map from './components/WayToCome/Map'
 
 function App() {
     return (
@@ -14,7 +14,8 @@ function App() {
             <WeddingBanner />
 
             <ImageGallery />
-            <Map />
+
+            <WayToCome />
         </Layout>
     )
 }
