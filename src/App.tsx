@@ -3,7 +3,7 @@ import Layout from './components/Layout'
 import WeddingBanner from './components/WeddingBanner'
 import Greeting from './components/Welcome/Greeting'
 import Welcome from './components/Welcome/Welcome'
-import Map from './components/Map/Map'
+import Map from './components/WayToCome/Map'
 
 function App() {
     return (
