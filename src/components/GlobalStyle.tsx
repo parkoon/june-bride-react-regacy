@@ -1,16 +1,15 @@
-import React, { FunctionComponent } from 'react'
+import { FunctionComponent } from 'react'
 import { Global, css } from '@emotion/react'
 import emotionReset from 'emotion-reset'
 
 const defaultStyle = css`
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
-
     ${emotionReset}
     * {
         padding: 0;
         margin: 0;
         box-sizing: border-box;
         font-family: 'Noto Sans KR', sans-serif;
+        font-weight: 400;
     }
     html,
     body,
