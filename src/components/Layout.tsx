@@ -1,8 +1,7 @@
-import React, { FunctionComponent } from 'react'
+import { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
 import GlobalStyle from './GlobalStyle'
 import Head from './Head'
-import AppBar from './AppBar'
 
 const Wrapper = styled.div`
     min-height: 100vh;
@@ -28,7 +27,6 @@ const Layout: FunctionComponent = ({ children }) => (
     <Wrapper>
         <Head />
         <GlobalStyle />
-        {/* <AppBar /> */}
         <Content>{children}</Content>
     </Wrapper>
 )

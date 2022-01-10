@@ -38,7 +38,7 @@ const Like = forwardRef<LottieLike>((_, ref) => {
                 animationRef.current?.play()
             },
         }),
-        [animationRef.current]
+        []
     )
 
     useEffect(() => {

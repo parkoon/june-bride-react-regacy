@@ -75,7 +75,7 @@ function ImageGalleryModal({ onClose }: Props) {
     useEffect(() => {
         blockScroll()
         return () => allowScroll()
-    }, [])
+    }, [allowScroll, blockScroll])
 
     return (
         <Wrapper>
