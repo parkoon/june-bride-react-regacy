@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import { MdClose } from 'react-icons/md'
 import Slider, { Settings } from 'react-slick'
 import { useScrollBlock } from '../../hooks/useScrollBlock'
-import colors from '../../styles/colors'
 
 const up = keyframes`
   from {
@@ -82,7 +81,7 @@ function ImageGalleryModal({ onClose }: Props) {
         <Wrapper>
             <Header>
                 <button type="button" onClick={onClose}>
-                    <MdClose size={30} color={colors.lightGray} />
+                    <MdClose size={30} color="#fff" />
                 </button>
                 <p>
                     {currentIndex + 1} / {images.length}

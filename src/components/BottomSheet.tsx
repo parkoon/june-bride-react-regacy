@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
 import { FunctionComponent } from 'react'
 import { useBottomSheet } from '../hooks/useBottomSheet'
-import colors from '../styles/colors'
 
 const Wrapper = styled.div`
     display: flex;
@@ -41,7 +40,7 @@ const Handle = styled.div`
     width: 32px;
     height: 4px;
     border-radius: 2px;
-    background-color: ${colors.lightGray};
+    background-color: gray;
     margin: auto;
 `
 
