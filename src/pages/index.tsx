@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import React, { FunctionComponent } from 'react'
 import ImageGallery from '../components/ImageGallery'
 import Layout from '../components/Layout'
+import Map from '../components/Map/Map'
 import WeddingBanner from '../components/WeddingBanner'
 import Greeting from '../components/Welcome/Greeting'
 import Welcome from '../components/Welcome/Welcome'
@@ -18,6 +19,7 @@ const IndexPage: FunctionComponent = () => {
             <WeddingBanner />
 
             <ImageGallery />
+            <Map />
             <FakeBox />
 
             {/* <Banner />
