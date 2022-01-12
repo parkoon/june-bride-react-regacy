@@ -1,3 +1,4 @@
+import Calendar from './components/Calendar/Calendar'
 import ImageGallery from './components/ImageGallery'
 import Layout from './components/Layout'
 import WayToCome from './components/WayToCome/WayToCome'
@@ -14,6 +15,8 @@ function App() {
             <WeddingBanner />
 
             <ImageGallery />
+
+            <Calendar />
 
             <WayToCome />
         </Layout>
