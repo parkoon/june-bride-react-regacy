@@ -1,6 +1,6 @@
+import React, { MouseEvent, useRef, useState } from 'react'
 import { keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
-import { FunctionComponent, useRef, MouseEvent, useState } from 'react'
 
 const rippleEffect = keyframes`
     to {
@@ -29,7 +29,8 @@ const StyledRipple = styled.span`
     background-color: #ecf0f1;
 `
 
-type RippleWrapperProps = {
+type Props = {
+    children: React.ReactNode
     afterEffect?(): void
 }
 
@@ -42,10 +43,7 @@ type RippleMetrics = {
     updated: number | null
 }
 
-const RippleWrapper: FunctionComponent<RippleWrapperProps> = ({
-    children,
-    afterEffect,
-}) => {
+function RippleWrapper({ children, afterEffect }: Props) {
     const wrapperRef = useRef<HTMLDivElement>(null)
 
     const [metrics, setMetrics] = useState<RippleMetrics>({

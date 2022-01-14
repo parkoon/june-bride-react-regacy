@@ -28,7 +28,7 @@ const Box = styled.div<{ bg: string }>`
     background: ${(props) => props.bg};
 `
 const background = ['#00b894', '#0984e3', '#d63031', '#2d3436']
-const Banner = () => {
+function Banner() {
     return (
         <div>
             <Slider {...defaultSettings}>

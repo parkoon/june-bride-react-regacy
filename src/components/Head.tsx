@@ -1,12 +1,11 @@
-import { FunctionComponent } from 'react'
 import { Helmet } from 'react-helmet'
 
-const Head: FunctionComponent = () => {
+function Head() {
     return (
         <Helmet>
             <html lang="ko" />
-            <title>{'title'}</title>
-            <meta name="description" content={'description'} />
+            <title>title</title>
+            <meta name="description" content="description" />
 
             <meta
                 name="viewport"
@@ -15,18 +14,18 @@ const Head: FunctionComponent = () => {
             <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
 
             <meta property="og:type" content="website" />
-            <meta property="og:title" content={'title'} />
-            <meta property="og:description" content={'description'} />
-            <meta property="og:image" content={'image'} />
-            <meta property="og:url" content={'siteUrl'} />
-            <meta property="og:site_name" content={'title'} />
+            <meta property="og:title" content="title" />
+            <meta property="og:description" content="description" />
+            <meta property="og:image" content="image" />
+            <meta property="og:url" content="siteUrl" />
+            <meta property="og:site_name" content="title" />
 
             <meta name="twitter:card" content="summary" />
-            <meta name="twitter:title" content={'title'} />
-            <meta name="twitter:description" content={'description'} />
-            <meta name="twitter:image" content={'image'} />
-            <meta name="twitter:site" content={'author'} />
-            <meta name="twitter:creator" content={'author'} />
+            <meta name="twitter:title" content="title" />
+            <meta name="twitter:description" content="description" />
+            <meta name="twitter:image" content="image" />
+            <meta name="twitter:site" content="author" />
+            <meta name="twitter:creator" content="author" />
         </Helmet>
     )
 }

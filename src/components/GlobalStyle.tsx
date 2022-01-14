@@ -1,4 +1,3 @@
-import { FunctionComponent } from 'react'
 import { Global, css } from '@emotion/react'
 import emotionReset from 'emotion-reset'
 
@@ -38,6 +37,8 @@ const defaultStyle = css`
     }
 `
 
-const GlobalStyle: FunctionComponent = () => <Global styles={defaultStyle} />
+function GlobalStyle() {
+    return <Global styles={defaultStyle} />
+}
 
 export default GlobalStyle

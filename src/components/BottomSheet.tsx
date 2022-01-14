@@ -1,5 +1,5 @@
+import React from 'react'
 import styled from '@emotion/styled'
-import { FunctionComponent } from 'react'
 import { useBottomSheet } from '../hooks/useBottomSheet'
 
 const Wrapper = styled.div`
@@ -44,7 +44,10 @@ const Handle = styled.div`
     margin: auto;
 `
 
-const BottomSheet: FunctionComponent = ({ children }) => {
+type Props = {
+    children: React.ReactNode
+}
+function BottomSheet({ children }: Props) {
     const MIN_Y = 120
     const MAX_Y = typeof window === 'undefined' ? 0 : window.innerHeight - 64
 

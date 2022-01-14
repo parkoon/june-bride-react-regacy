@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 function randomGenerator(start: number, end: number, isInt?: boolean) {
     let num = start + (end - start) * Math.random()
@@ -29,7 +29,6 @@ class Particle {
         rotateAngle: number,
         width: number
     ) {
-        console.log(initialX)
         this.initialX = initialX
         this.currentX = initialX
         this.initialY = initialY

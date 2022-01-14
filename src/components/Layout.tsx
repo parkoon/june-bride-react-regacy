@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 import GlobalStyle from './GlobalStyle'
 import Head from './Head'
@@ -23,12 +23,17 @@ const Content = styled.main`
     /* padding-top: 8px; */
 `
 
-const Layout: FunctionComponent = ({ children }) => (
-    <Wrapper>
-        <Head />
-        <GlobalStyle />
-        <Content>{children}</Content>
-    </Wrapper>
-)
+type Props = {
+    children: React.ReactNode
+}
+function Layout({ children }: Props) {
+    return (
+        <Wrapper>
+            <Head />
+            <GlobalStyle />
+            <Content>{children}</Content>
+        </Wrapper>
+    )
+}
 
 export default Layout
