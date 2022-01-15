@@ -1,9 +1,7 @@
 import styled from '@emotion/styled'
 import { days, weeks } from './constants'
 
-const Wrapper = styled.div`
- 
-`
+const Wrapper = styled.div``
 
 const WeekWrapper = styled.div`
     display: grid;
