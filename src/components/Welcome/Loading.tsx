@@ -23,9 +23,7 @@ function Loading() {
 
             animation.setSpeed(2)
 
-            animation.addEventListener('loopComplete', () => {
-                console.log('completed')
-            })
+            animation.addEventListener('loopComplete', () => {})
         }
 
         return () => lottie.destroy()

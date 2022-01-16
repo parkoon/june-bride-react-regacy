@@ -30,8 +30,6 @@ function Calendar() {
             </WeekWrapper>
             <DayWrapper>
                 {days.map((day, index) => {
-                    console.log(day)
-
                     return <DayCell key={index}>{day}</DayCell>
                 })}
             </DayWrapper>
