@@ -4,18 +4,21 @@ import { titleTransition } from '../constants/transition'
 import useFakeLoading from '../hooks/useFakeLoading'
 import useIsScrollTop from '../hooks/useIsScrollTop'
 
-const Wrapper = styled.h1<{ loaded: boolean; full: boolean }>`
+const Wrapper = styled.div`
     position: absolute;
-
     top: 0;
     left: 0;
 
     width: 100vw;
     height: 100vh;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
+    overflow-x: hidden;
+`
+const Title = styled.h1<{ loaded: boolean; full: boolean }>`
     text-transform: uppercase;
     font-size: 72px;
     opacity: 0;
@@ -33,7 +36,7 @@ const Wrapper = styled.h1<{ loaded: boolean; full: boolean }>`
     ${({ full }) =>
         full &&
         css`
-            transform: translateX(50%);
+            transform: translateX(75%);
         `}
     font-weight: bold;
     transition: ${titleTransition};
@@ -44,10 +47,12 @@ function WelcomeMessage() {
     const isScrollTop = useIsScrollTop()
 
     return (
-        <Wrapper loaded={loaded} full={!isScrollTop}>
-            초대
-            <br />
-            합니다.
+        <Wrapper>
+            <Title loaded={loaded} full={!isScrollTop}>
+                초대
+                <br />
+                합니다.
+            </Title>
         </Wrapper>
     )
 }
