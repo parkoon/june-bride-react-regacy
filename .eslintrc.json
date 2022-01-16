@@ -19,6 +19,7 @@
     "plugins": ["react", "@typescript-eslint", "prettier"],
     "rules": {
         "prettier/prettier": ["error", { "endOfLine": "auto" }],
+        "no-unused-vars": "warn",
         "no-use-before-define": "off",
         "no-restricted-exports": "off",
         "react/react-in-jsx-scope": "off",

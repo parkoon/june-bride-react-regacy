@@ -1,13 +1,13 @@
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 import { useEffect, useState } from 'react'
-import WelcomeMessage from './WelcomeMessage'
 import ScrollDownAnimation from './ScrollDownAnimation'
 import useScrollTopEffect from '../../hooks/useIsScrollTop'
 import Loading from './Loading'
+import { titleTransition, widthTransition } from '../../constants/transition'
 
 const Wrapper = styled.section<{ loaded: boolean; full: boolean }>`
-    height: calc(100vh);
+    height: 105vh;
     width: 100vw;
     background: #000;
 
@@ -24,10 +24,38 @@ const Wrapper = styled.section<{ loaded: boolean; full: boolean }>`
         css`
             width: 100vw;
         `}
-    transition: 0.7s;
+    transition: ${widthTransition};
 `
 
-const FAKE_LOADING_TIME = 3.5 * 1000
+const Message = styled.h1<{ loaded: boolean; full: boolean }>`
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-transform: uppercase;
+    font-size: 72px;
+    opacity: 0;
+
+    color: #dfe6e9;
+
+    ${({ loaded }) =>
+        loaded &&
+        css`
+            opacity: 1;
+        `};
+
+    ${({ full }) =>
+        full &&
+        css`
+            transform: translateX(50%);
+        `}
+    font-weight: bold;
+    transition: ${titleTransition};
+`
+
+const FAKE_LOADING_TIME = (3.5 * 1000) / 3.5
 function Welcome() {
     const [loaded, setLoaded] = useState(false)
 
@@ -44,7 +72,11 @@ function Welcome() {
     return (
         <Wrapper loaded={loaded} full={!isScrollTop}>
             {!loaded && <Loading />}
-            <WelcomeMessage loaded={loaded} posRight={!isScrollTop} />
+            <Message loaded={loaded} full={!isScrollTop}>
+                초대
+                <br />
+                합니다.
+            </Message>
             <ScrollDownAnimation show={showArrowAnimation} />
         </Wrapper>
     )

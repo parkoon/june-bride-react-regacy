@@ -21,18 +21,17 @@ const Wrapper = styled.div<{ show: boolean }>`
     position: absolute;
     bottom: 12%;
     left: 50%;
-    transform: rotate(-90deg) translate(-100%, -60px);
+
     opacity: 0;
+    transform: rotate(-90deg) translate(-100%, -60px);
 
     ${({ show }) =>
         show &&
         css`
             opacity: 1;
+            transition: all 0.7s ease 0.7s;
             transform: rotate(-90deg) translate(10px, -60px);
         `}
-
-    transition: 1s;
-    transition-delay: 0.7s;
 `
 
 const Arrow = styled(MdArrowBack)`
