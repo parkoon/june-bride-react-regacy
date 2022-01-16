@@ -6,6 +6,8 @@ import useScrollTopEffect from '../../hooks/useIsScrollTop'
 import Loading from './Loading'
 import { titleTransition, widthTransition } from '../../constants/transition'
 
+import WelcomeBrideImage from '../../assets/images/welcome-bride.jpg'
+
 const Wrapper = styled.section<{ loaded: boolean; full: boolean }>`
     height: 105vh;
     width: 100vw;
