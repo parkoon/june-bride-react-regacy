@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { widthTransition } from '../constants/transition'
+import { mainWidthTransition } from '../constants/transition'
 import useScrollTopEffect from '../hooks/useIsScrollTop'
 import TextRevealAnmiation from './TextRevealAnmiation'
 
@@ -10,9 +10,9 @@ const Wrapper = styled.div<{ full: boolean }>`
     bottom: 0;
     padding: 20px 32px 72px 32px;
 
-    width: ${({ full }) => `${full ? 100 : 50}vw`};
+    transform: ${({ full }) => `translateX(${full ? '0' : '-50%'})`};
 
-    transition: ${widthTransition};
+    transition: ${mainWidthTransition};
 `
 
 const Title = styled.h2`

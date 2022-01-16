@@ -5,11 +5,16 @@ import WayToCome from './components/WayToCome/WayToCome'
 import WeddingBanner from './components/WeddingBanner'
 import Greeting from './components/Greeting'
 import Welcome from './components/Welcome/Welcome'
+import WelcomeMessage from './components/WelcomeMessage'
+import { FakeLoadingProvider } from './hooks/useFakeLoading'
 
 function App() {
     return (
         <Layout>
-            <Welcome />
+            <FakeLoadingProvider>
+                <Welcome />
+                <WelcomeMessage />
+            </FakeLoadingProvider>
             <Greeting />
             <WeddingBanner />
             <ImageGallery />
