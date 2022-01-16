@@ -2,7 +2,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { titleTransition } from '../constants/transition'
 import useFakeLoading from '../hooks/useFakeLoading'
-import useScrollTopEffect from '../hooks/useIsScrollTop'
+import useIsScrollTop from '../hooks/useIsScrollTop'
 
 const Wrapper = styled.h1<{ loaded: boolean; full: boolean }>`
     position: absolute;
@@ -41,7 +41,7 @@ const Wrapper = styled.h1<{ loaded: boolean; full: boolean }>`
 
 function WelcomeMessage() {
     const loaded = useFakeLoading()
-    const isScrollTop = useScrollTopEffect()
+    const isScrollTop = useIsScrollTop()
 
     return (
         <Wrapper loaded={loaded} full={!isScrollTop}>

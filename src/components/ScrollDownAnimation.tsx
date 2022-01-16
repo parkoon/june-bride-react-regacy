@@ -1,7 +1,8 @@
 import { css, keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
-import React from 'react'
 import { MdArrowBack } from 'react-icons/md'
+import useFakeLoading from '../hooks/useFakeLoading'
+import useIsScrollTop from '../hooks/useIsScrollTop'
 
 const bounce = keyframes`
     0% {
@@ -18,7 +19,7 @@ const Wrapper = styled.div<{ show: boolean }>`
 
     color: #636e72;
 
-    position: absolute;
+    position: fixed;
     bottom: 12%;
     left: 50%;
 
@@ -44,10 +45,11 @@ const Text = styled.span`
     margin-left: 7px;
 `
 
-type Props = {
-    show: boolean
-}
-function ScrollDownAnimation({ show }: Props) {
+function ScrollDownAnimation() {
+    const loaded = useFakeLoading()
+    const isScrollTop = useIsScrollTop()
+
+    const show = loaded && isScrollTop
     return (
         <Wrapper show={show}>
             <Arrow />

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { mainWidthTransition } from '../constants/transition'
-import useScrollTopEffect from '../hooks/useIsScrollTop'
+import useIsScrollTop from '../hooks/useIsScrollTop'
 import TextRevealAnmiation from './TextRevealAnmiation'
 
 const Wrapper = styled.div<{ full: boolean }>`
@@ -32,7 +32,7 @@ const Description = styled.p`
 `
 
 function Greeting() {
-    const isScrollTop = useScrollTopEffect()
+    const isScrollTop = useIsScrollTop()
 
     return (
         <Wrapper full={!isScrollTop}>

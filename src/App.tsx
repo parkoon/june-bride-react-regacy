@@ -7,6 +7,7 @@ import Greeting from './components/Greeting'
 import Welcome from './components/Welcome/Welcome'
 import WelcomeMessage from './components/WelcomeMessage'
 import { FakeLoadingProvider } from './hooks/useFakeLoading'
+import ScrollDownAnimation from './components/ScrollDownAnimation'
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
             <FakeLoadingProvider>
                 <Welcome />
                 <WelcomeMessage />
+                <ScrollDownAnimation />
             </FakeLoadingProvider>
             <Greeting />
             <WeddingBanner />

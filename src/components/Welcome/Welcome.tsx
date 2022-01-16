@@ -1,13 +1,8 @@
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
-import { useEffect, useState } from 'react'
-import ScrollDownAnimation from './ScrollDownAnimation'
-import useScrollTopEffect from '../../hooks/useIsScrollTop'
+import useIsScrollTop from '../../hooks/useIsScrollTop'
 import Loading from './Loading'
-import {
-    titleTransition,
-    mainWidthTransition,
-} from '../../constants/transition'
+import { mainWidthTransition } from '../../constants/transition'
 
 import WelcomeBrideImage from '../../assets/images/welcome-bride.jpg'
 import useFakeLoading from '../../hooks/useFakeLoading'
@@ -39,14 +34,11 @@ const Wrapper = styled.section<{ loaded: boolean; full: boolean; src: string }>`
 
 function Welcome() {
     const loaded = useFakeLoading()
-    const isScrollTop = useScrollTopEffect()
-
-    const showArrowAnimation = loaded && isScrollTop
+    const isScrollTop = useIsScrollTop()
 
     return (
         <Wrapper loaded={loaded} full={!isScrollTop} src={WelcomeBrideImage}>
             {!loaded && <Loading />}
-            <ScrollDownAnimation show={showArrowAnimation} />
         </Wrapper>
     )
 }
