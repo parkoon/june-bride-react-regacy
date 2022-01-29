@@ -63,11 +63,7 @@ function lerp(start: number, end: number, t: number) {
     return `${start * (1 - t) + end * t}`
 }
 
-let id = 0
-
 function ImageGallery() {
-    const [selectedImageSrc, setSelectedImageSrc] = useState(images[0])
-
     const [openModal, setOpenModal] = useState(false)
 
     const currentX = useRef<number>(0)
@@ -75,15 +71,10 @@ function ImageGallery() {
 
     const sliderRef = useRef<HTMLDivElement>(null)
     const wrapperRef = useRef<HTMLDivElement>(null)
-    const imageRef = useRef<HTMLDivElement>(null)
 
     const imageRefs = useRef<HTMLDivElement[]>([])
 
-    const fakeRef = useRef<HTMLDivElement>(null)
-
     const [reached, setReached] = useState(false)
-
-    const scrollHeightRef = useRef<HTMLDivElement>(null)
 
     const init = () => {
         const sliderSCrollWidth = sliderRef.current?.scrollWidth
@@ -129,7 +120,7 @@ function ImageGallery() {
             sliderRef.current.style.transform = `translate(-${currentX.current}px, -50%)`
         }
         animateImage()
-        id = requestAnimationFrame(animate)
+        requestAnimationFrame(animate)
     }
 
     useEffect(() => {
