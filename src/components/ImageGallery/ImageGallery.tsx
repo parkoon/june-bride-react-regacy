@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import { useEffect, useRef, useState } from 'react'
-import { Settings } from 'react-slick'
 import 'slick-carousel/slick/slick-theme.css'
 import 'slick-carousel/slick/slick.css'
 import ImageGalleryModal from './ImageGalleryModal'
@@ -18,26 +17,6 @@ const images = [
  * @see https://codepen.io/christoffer-traynor-s-rensen/pen/WNpoRWg
  * @see https://www.youtube.com/watch?v=z-oexYPY9GY
  */
-
-const settings: Settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    swipeToSlide: true,
-    centerPadding: '60px',
-}
-
-const Wrapper = styled.div<{ fixed: boolean }>`
-    background: lightblue;
-`
-
-const Image = styled.div`
-    width: 300px;
-    height: 420px;
-    background-image: url('https://static.toss.im/career/home-intro-cover-mobile.jpg');
-    background-position: 50% 50%;
-    background-size: cover;
-`
 
 const Slider = styled.div`
     height: 500px;
@@ -108,12 +87,6 @@ function ImageGallery() {
 
     const init = () => {
         const sliderSCrollWidth = sliderRef.current?.scrollWidth
-        const sliderHeight = sliderRef.current?.clientHeight
-
-        console.log('sliderSCrollWidth', sliderSCrollWidth)
-        console.log('sliderHeight', sliderHeight)
-
-        console.log('sliderSCrollWidth', sliderSCrollWidth)
 
         if (wrapperRef.current && sliderSCrollWidth) {
             wrapperRef.current.style.height = `calc(${sliderSCrollWidth}px + 100vh)`
