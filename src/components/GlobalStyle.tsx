@@ -16,6 +16,10 @@ const defaultStyle = css`
         height: 100%;
     }
 
+    body {
+        overflow-x: hidden;
+    }
+
     a,
     a:hover {
         color: inherit;

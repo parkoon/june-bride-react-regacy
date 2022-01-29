@@ -15,7 +15,7 @@ const images = [
     'https://cdn.pixabay.com/photo/2016/04/26/08/00/wedding-1353829_960_720.jpg',
     'https://cdn.pixabay.com/photo/2017/08/01/08/28/bouquet-2563485_960_720.jpg',
     'https://cdn.pixabay.com/photo/2017/08/01/08/28/bouquet-2563485_960_720.jpg',
-    'https://cdn.pixabay.com/photo/2017/08/01/08/28/bouquet-2563485_960_720.jpg',
+    'https://cdn.pixabay.com/photo/2017/08/31/11/55/wedding-2700495_960_720.jpg',
 ]
 
 /**
@@ -32,21 +32,7 @@ const settings: Settings = {
 }
 
 const Wrapper = styled.div<{ fixed: boolean }>`
-    /* padding: 20px; */
-
     background: lightblue;
-
-    ${({ fixed }) =>
-        fixed
-            ? css`
-                  position: sticky;
-                  left: 0;
-                  top: 0;
-                  z-index: 9;
-              `
-            : css`
-                  position: block;
-              `}
 `
 
 const Image = styled.div`
@@ -57,20 +43,13 @@ const Image = styled.div`
     background-size: cover;
 `
 
-const HorizontalScroll = styled.div`
-    display: flex;
-    overflow-y: hidden;
-    overflow-x: scroll;
-
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-    > * {
-        flex-shrink: 0;
-    }
-`
-
 const Slider = styled.div`
     height: 500px;
+
+    position: absolute;
+    top: 50%;
+
+    transform: translateY(-50%);
 `
 const SliderInnder = styled.div`
     height: 100%;
@@ -97,13 +76,19 @@ const SliderImage = styled.div<{ url: string }>`
     background-image: ${({ url }) => `url(${url})`};
     background-position: center;
     background-size: cover;
+`
 
-    /* filter: grayscale(100%); */
+const StickyWrapper = styled.div`
+    position: sticky;
+    top: 0;
+    height: 100vh;
 `
 
 function lerp(start: number, end: number, t: number) {
     return `${start * (1 - t) + end * t}`
 }
+
+let id = 0
 
 function ImageGallery() {
     const [selectedImageSrc, setSelectedImageSrc] = useState(images[0])
@@ -115,30 +100,67 @@ function ImageGallery() {
 
     const sliderRef = useRef<HTMLDivElement>(null)
     const wrapperRef = useRef<HTMLDivElement>(null)
+    const imageRef = useRef<HTMLDivElement>(null)
+
+    const imageRefs = useRef<HTMLDivElement[]>([])
+
+    const fakeRef = useRef<HTMLDivElement>(null)
 
     const [reached, setReached] = useState(false)
 
+    const scrollHeightRef = useRef<HTMLDivElement>(null)
+
     const init = () => {
         const sliderSCrollWidth = sliderRef.current?.scrollWidth
+        const sliderHeight = sliderRef.current?.clientHeight
 
-        if (wrapperRef.current) {
-            wrapperRef.current.style.height = `${sliderSCrollWidth}px`
+        console.log('sliderSCrollWidth', sliderSCrollWidth)
+        console.log('sliderHeight', sliderHeight)
+
+        console.log('sliderSCrollWidth', sliderSCrollWidth)
+
+        if (wrapperRef.current && sliderSCrollWidth) {
+            wrapperRef.current.style.height = `calc(${sliderSCrollWidth}px + 100vh)`
+            // scrollHeightRef.current!.style.height = `${sliderSCrollWidth}px`
+        }
+    }
+
+    function animateImage() {
+        const ratio = currentX.current / 400
+
+        if (ratio < 0) return
+
+        if (imageRefs.current) {
+            imageRefs.current.forEach((image, idx) => {
+                const intersectionRatio = ratio - idx * 0.7
+
+                // eslint-disable-next-line no-param-reassign
+                image.style.transform = `translateX(${
+                    intersectionRatio! * 70
+                }px)`
+            })
         }
     }
 
     function animate() {
+        // console.log('currentX.current', currentX.current)
         currentX.current = Number(
-            parseFloat(lerp(currentX.current, scrollPos.current, 0.5)).toFixed(
-                2
-            )
+            parseFloat(
+                lerp(
+                    currentX.current,
+                    scrollPos.current - wrapperRef.current!.offsetTop,
+                    0.05
+                )
+            ).toFixed(2)
         )
 
         scrollPos.current = window.scrollY
 
         if (sliderRef.current) {
-            sliderRef.current.style.transform = `translateX(-${currentX.current}px)`
+            sliderRef.current.style.transform = `translate(-${currentX.current}px, -50%)`
         }
-        requestAnimationFrame(animate)
+        animateImage()
+        id = requestAnimationFrame(animate)
     }
 
     useEffect(() => {
@@ -146,17 +168,22 @@ function ImageGallery() {
         // animate()
 
         window.addEventListener('scroll', () => {
-            console.log(wrapperRef.current!.offsetTop, window.scrollY)
-            if (wrapperRef.current!.offsetTop < window.scrollY) {
+            if (wrapperRef.current!.offsetTop <= window.scrollY) {
                 setReached(true)
             } else {
                 setReached(false)
             }
         })
     }, [])
+
+    useEffect(() => {
+        if (reached) {
+            animate()
+        }
+    }, [reached])
     return (
-        <>
-            <Wrapper ref={wrapperRef} fixed={reached}>
+        <div ref={wrapperRef}>
+            <StickyWrapper>
                 <h2>Photos.</h2>
 
                 <p>
@@ -165,25 +192,34 @@ function ImageGallery() {
                 </p>
                 <Slider ref={sliderRef}>
                     <SliderInnder>
-                        {images.map((url) => (
-                            <SliderItem>
-                                <SliderImage url={url} />
-                            </SliderItem>
-                        ))}
+                        {images.map((url, index) => {
+                            return (
+                                <SliderItem>
+                                    <SliderImage
+                                        url={url}
+                                        // eslint-disable-next-line no-return-assign
+                                        ref={(el) =>
+                                            (imageRefs.current[index] = el!)
+                                        }
+                                    />
+                                </SliderItem>
+                            )
+                        })}
                     </SliderInnder>
                 </Slider>
+            </StickyWrapper>
 
-                {/* <HorizontalScroll>
+            {/* <HorizontalScroll>
                 {images.map((src) => (
                     <Image />
                 ))}
             </HorizontalScroll> */}
-                {/* <SelectedImage
+            {/* <SelectedImage
                 src={selectedImageSrc}
                 onClick={() => setOpenModal(true)}
             /> */}
 
-                {/* <Slider {...settings}>
+            {/* <Slider {...settings}>
                 {images.map((src) => (
                     <Image />
                     // <img
@@ -199,18 +235,10 @@ function ImageGallery() {
                 ))}
             </Slider> */}
 
-                {openModal && (
-                    <ImageGalleryModal onClose={() => setOpenModal(false)} />
-                )}
-            </Wrapper>
-            {/* <div
-                style={{
-                    height: reached ? 1872 : 0,
-                }}
-            >
-                z
-            </div> */}
-        </>
+            {openModal && (
+                <ImageGalleryModal onClose={() => setOpenModal(false)} />
+            )}
+        </div>
     )
 }
 

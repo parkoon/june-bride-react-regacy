@@ -7,7 +7,7 @@ const Wrapper = styled.div`
     min-height: 100vh;
 
     /* 초대합니다 애니메이션으로 발생하는 overflow */
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 
     /* @media (min-width: 1024px) {
         width: 375px;
