@@ -1,13 +1,9 @@
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { useEffect, useRef, useState } from 'react'
 import { Settings } from 'react-slick'
 import 'slick-carousel/slick/slick-theme.css'
 import 'slick-carousel/slick/slick.css'
-import Heading2 from '../Typography/Heading2'
-import Paragraph from '../Typography/Paragraph'
 import ImageGalleryModal from './ImageGalleryModal'
-import SelectedImage from './SelectedImage'
 
 const images = [
     'https://cdn.pixabay.com/photo/2017/08/31/11/55/wedding-2700495_960_720.jpg',
