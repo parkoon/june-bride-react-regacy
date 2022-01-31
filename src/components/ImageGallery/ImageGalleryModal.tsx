@@ -1,6 +1,6 @@
 import { keyframes } from '@emotion/react'
 import styled from '@emotion/styled'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { MdClose } from 'react-icons/md'
 import Slider, { Settings } from 'react-slick'
 import { useScrollBlock } from '../../hooks/useScrollBlock'
@@ -50,13 +50,6 @@ const SliderWrapper = styled.div`
     transform: translateY(50%);
 `
 
-const images = [
-    'https://cdn.pixabay.com/photo/2017/08/31/11/55/wedding-2700495_960_720.jpg',
-    'https://cdn.pixabay.com/photo/2017/08/01/15/23/people-2566244_960_720.jpg',
-    'https://cdn.pixabay.com/photo/2016/04/26/08/00/wedding-1353829_960_720.jpg',
-    'https://cdn.pixabay.com/photo/2017/08/01/08/28/bouquet-2563485_960_720.jpg',
-]
-
 const settings: Settings = {
     dots: false,
     infinite: false,
@@ -66,11 +59,19 @@ const settings: Settings = {
 }
 
 type Props = {
+    images: string[]
+    initialImage: string
     onClose?: () => void
 }
-function ImageGalleryModal({ onClose }: Props) {
+function ImageGalleryModal({ images, initialImage, onClose }: Props) {
     const [blockScroll, allowScroll] = useScrollBlock()
-    const [currentIndex, setCurrentIndex] = useState(0)
+
+    const initialSlide = useMemo(
+        () => images.findIndex((v) => v === initialImage),
+        [images]
+    )
+
+    const [currentIndex, setCurrentIndex] = useState(initialSlide)
 
     useEffect(() => {
         blockScroll()
@@ -90,7 +91,11 @@ function ImageGalleryModal({ onClose }: Props) {
             </Header>
 
             <SliderWrapper>
-                <Slider {...settings} afterChange={setCurrentIndex}>
+                <Slider
+                    {...settings}
+                    afterChange={setCurrentIndex}
+                    initialSlide={initialSlide}
+                >
                     {images.map((src) => (
                         <img role="presentation" src={src} alt="gallery" />
                     ))}

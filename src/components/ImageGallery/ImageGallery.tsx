@@ -64,7 +64,7 @@ function lerp(start: number, end: number, t: number) {
 }
 
 function ImageGallery() {
-    const [openModal, setOpenModal] = useState(false)
+    const [selectedImage, setSelectedImage] = useState('')
 
     const currentX = useRef<number>(0)
     const scrollPos = useRef<number>(0)
@@ -161,6 +161,7 @@ function ImageGallery() {
                                         ref={(el) =>
                                             (imageRefs.current[index] = el!)
                                         }
+                                        onClick={() => setSelectedImage(url)}
                                     />
                                 </SliderItem>
                             )
@@ -169,86 +170,15 @@ function ImageGallery() {
                 </Slider>
             </StickyWrapper>
 
-            {/* <HorizontalScroll>
-                {images.map((src) => (
-                    <Image />
-                ))}
-            </HorizontalScroll> */}
-            {/* <SelectedImage
-                src={selectedImageSrc}
-                onClick={() => setOpenModal(true)}
-            /> */}
-
-            {/* <Slider {...settings}>
-                {images.map((src) => (
-                    <Image />
-                    // <img
-                    //     role="presentation"
-                    //     src={src}
-                    //     alt="gallery"
-                    //     height={200}
-                    //     onClick={() => {
-                    //         setSelectedImageSrc(src)
-                    //     }}
-                    //     style={{ marginRight: 20 }}
-                    // />
-                ))}
-            </Slider> */}
-
-            {openModal && (
-                <ImageGalleryModal onClose={() => setOpenModal(false)} />
+            {selectedImage && (
+                <ImageGalleryModal
+                    images={images}
+                    initialImage={selectedImage}
+                    onClose={() => setSelectedImage('')}
+                />
             )}
         </div>
     )
 }
 
 export default ImageGallery
-
-// let images = [...document.querySelectorAll('.img')];
-// let slider = document0.querySelector('.slider');
-// let sliderWidth;
-// let imageWitdh;
-// let current =0;
-// let target = 0;
-// let ease = .05
-
-// window,addEventListener('resize, init');
-
-// images.forEach((img, idx) => {
-//     img.style.backgroundImage = `url(./images/${idx+1}.jpeg)`
-// })
-
-// function lerp (start, end, t){
-//     return start * (1-t) + end * t;
-// }
-
-// function setTransform(el, transform){
-//     el.style.transform =transform;
-// }
-
-// function init(){
-//     sliderWidth = slider.getBoundingClientRect().width;
-//     imagesWidth / images.length;
-//     document.body.style.height = `${sliderWidth - (window,innerWidth-window.innerHeight)}px`;
-// }
-
-// function animate(){
-//     current = parseFloat (lerp(current, target, ease)).toFixed(2);
-//     target = window.scrollY;
-//     setTransform(slider, `translateX(-${current}px)`)
-//     animateImages();
-//     requestAnimationFrame(animate);
-// }
-
-// function animateImages(){
-//     let ratio = current / imageWitdh;
-//     let intersectionRatio;
-
-//     imageWitdh.forEach((image,idx)=> {
-//         intersectionRatioValue = ratio - (idx * 0.7);
-//         setTransform(image, `translateX(${intersectionRatioValue * 70}px)`)
-//     })
-// }
-
-// init();
-// animate();
