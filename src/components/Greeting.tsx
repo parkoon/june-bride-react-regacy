@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { mainWidthTransition } from '../constants/transition'
 import useIsScrollTop from '../hooks/useIsScrollTop'
-import TextRevealAnmiation from './TextRevealAnmiation'
+import TextRevealAnimation from './TextRevealAnimation'
 
 const Wrapper = styled.div<{ full: boolean }>`
     background-color: #000;
@@ -38,12 +38,12 @@ function Greeting() {
         <Wrapper full={!isScrollTop}>
             {!isScrollTop && (
                 <>
-                    <TextRevealAnmiation
+                    <TextRevealAnimation
                         direction="horizontal"
                         delay={0.7}
                         items={[<SubTitle>since june 2017.</SubTitle>]}
                     />
-                    <TextRevealAnmiation
+                    <TextRevealAnimation
                         direction="vertical"
                         delay={0.8}
                         items={[

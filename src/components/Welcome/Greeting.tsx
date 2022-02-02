@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import TextRevealAnmiation from '../TextRevealAnmiation'
+import TextRevealAnimation from '../TextRevealAnimation'
 
 const Wrapper = styled.div`
     position: absolute;
@@ -29,12 +29,12 @@ const Description = styled.p`
 function Greeting() {
     return (
         <Wrapper>
-            <TextRevealAnmiation
+            <TextRevealAnimation
                 direction="horizontal"
                 delay={0.7}
                 items={[<SubTitle>since june 2017.</SubTitle>]}
             />
-            <TextRevealAnmiation
+            <TextRevealAnimation
                 direction="vertical"
                 delay={0.8}
                 items={[

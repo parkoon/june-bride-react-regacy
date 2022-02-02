@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { useInView } from 'react-intersection-observer'
-import TextRevealAnmiation from './TextRevealAnmiation'
+import TextRevealAnimation from './TextRevealAnimation'
 
 const TitleLetter = styled.span`
     font-weight: bold;
@@ -16,7 +16,7 @@ function SectionTitle() {
     console.log('inView', inView)
     return (
         <div ref={ref}>
-            <TextRevealAnmiation
+            <TextRevealAnimation
                 direction="vertical"
                 delay={0.7}
                 play={inView}
@@ -24,6 +24,7 @@ function SectionTitle() {
                     <TitleLetter>사</TitleLetter>,
                     <TitleLetter>진갤러리.</TitleLetter>,
                 ]}
+                once
             />
         </div>
     )

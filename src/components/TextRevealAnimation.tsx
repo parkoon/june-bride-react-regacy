@@ -9,6 +9,7 @@ type Props = {
     delay?: number
     direction?: 'horizontal' | 'vertical'
     play?: boolean
+    once?: boolean
 }
 
 const Wrapper = styled.div`
@@ -22,13 +23,15 @@ const Text = styled.p<Pick<Props, 'direction'>>`
         direction === 'vertical' ? 'translateY(100%)' : 'translateX(-100%)'};
 `
 
-function TextRevealAnmiation({
+function TextRevealAnimation({
     items,
     delay,
     direction = 'vertical',
     play = true,
+    once = false,
 }: Props) {
     const ref = useRef<HTMLSpanElement[]>([])
+    const animateOnMountAtOnce = useRef(false)
 
     useEffect(() => {
         if (ref.current && play) {
@@ -39,10 +42,12 @@ function TextRevealAnmiation({
                 opacity: 1,
                 delay,
             })
+
+            animateOnMountAtOnce.current = once
         }
     }, [direction, play])
 
-    if (!play) return null
+    if (!play && !animateOnMountAtOnce) return null
 
     return (
         <>
@@ -61,4 +66,4 @@ function TextRevealAnmiation({
     )
 }
 
-export default TextRevealAnmiation
+export default TextRevealAnimation

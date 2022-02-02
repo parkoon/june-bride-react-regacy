@@ -1,12 +1,12 @@
 import styled from '@emotion/styled'
-import TextRevealAnmiation from './TextRevealAnmiation'
+import TextRevealAnimation from './TextRevealAnimation'
 
 const Description = styled.p``
 
 function SectionDescription() {
     return (
         <div>
-            <TextRevealAnmiation
+            <TextRevealAnimation
                 direction="vertical"
                 delay={1.4}
                 items={[
