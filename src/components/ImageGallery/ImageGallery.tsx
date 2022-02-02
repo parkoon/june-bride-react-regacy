@@ -2,6 +2,8 @@ import styled from '@emotion/styled'
 import { useEffect, useRef, useState } from 'react'
 import 'slick-carousel/slick/slick-theme.css'
 import 'slick-carousel/slick/slick.css'
+import SectionDescription from '../SectionDescription'
+import SectionTitle from '../SectionTitle'
 import ImageGalleryModal from './ImageGalleryModal'
 
 const images = [
@@ -57,6 +59,10 @@ const StickyWrapper = styled.div`
     position: sticky;
     top: 0;
     height: 100vh;
+`
+
+const Header = styled.div`
+    padding: 40px 32px;
 `
 
 function lerp(start: number, end: number, t: number) {
@@ -144,13 +150,12 @@ function ImageGallery() {
     return (
         <div ref={wrapperRef}>
             <StickyWrapper>
-                <h2>Photos.</h2>
+                <Header>
+                    <SectionTitle />
 
-                <p>
-                    ipsum dolorem atque aspernatur quisquam dignissimos.
-                    Quibusdam, nam!
-                </p>
-                <Slider ref={sliderRef}>
+                    <SectionDescription />
+                </Header>
+                {/* <Slider ref={sliderRef}>
                     <SliderInnder>
                         {images.map((url, index) => {
                             return (
@@ -167,7 +172,7 @@ function ImageGallery() {
                             )
                         })}
                     </SliderInnder>
-                </Slider>
+                </Slider> */}
             </StickyWrapper>
 
             {selectedImage && (

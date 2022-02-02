@@ -8,6 +8,7 @@ type Props = {
     items: React.ReactNode[]
     delay?: number
     direction?: 'horizontal' | 'vertical'
+    play?: boolean
 }
 
 const Wrapper = styled.div`
@@ -21,11 +22,16 @@ const Text = styled.p<Pick<Props, 'direction'>>`
         direction === 'vertical' ? 'translateY(100%)' : 'translateX(-100%)'};
 `
 
-function TextRevealAnmiation({ items, delay, direction = 'vertical' }: Props) {
+function TextRevealAnmiation({
+    items,
+    delay,
+    direction = 'vertical',
+    play = true,
+}: Props) {
     const ref = useRef<HTMLSpanElement[]>([])
 
     useEffect(() => {
-        if (ref.current) {
+        if (ref.current && play) {
             gsap.to(ref.current, {
                 ...(direction === 'vertical' ? { y: 0 } : { x: 0 }),
                 duration: 0.7,
@@ -34,7 +40,10 @@ function TextRevealAnmiation({ items, delay, direction = 'vertical' }: Props) {
                 delay,
             })
         }
-    }, [direction])
+    }, [direction, play])
+
+    if (!play) return null
+
     return (
         <>
             {items.map((item, index) => (

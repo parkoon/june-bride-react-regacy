@@ -5,6 +5,7 @@ import Head from './Head'
 
 const Wrapper = styled.div`
     min-height: 100vh;
+    background-color: #f2f2f2;
 
     /* 초대합니다 애니메이션으로 발생하는 overflow */
     /* overflow-x: hidden; */
