@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
 import { useEffect, useRef, useState } from 'react'
-import 'slick-carousel/slick/slick-theme.css'
-import 'slick-carousel/slick/slick.css'
+import { motion } from 'framer-motion'
 import SectionDescription from '../SectionDescription'
 import SectionTitle from '../SectionTitle'
 import ImageGalleryModal from './ImageGalleryModal'
@@ -15,165 +14,76 @@ const images = [
     'https://cdn.pixabay.com/photo/2017/08/31/11/55/wedding-2700495_960_720.jpg',
 ]
 
-/**
- * @see https://codepen.io/christoffer-traynor-s-rensen/pen/WNpoRWg
- * @see https://www.youtube.com/watch?v=z-oexYPY9GY
- */
-
-const Slider = styled.div`
-    height: 500px;
-
-    position: absolute;
-    top: 50%;
-
-    transform: translateY(-50%);
+const Wrapper = styled.section`
+    padding: 60px 0;
 `
-const SliderInnder = styled.div`
-    height: 100%;
+
+const Header = styled.div`
+    padding: 0px 32px;
+    margin-bottom: 20px;
+`
+
+const Carousel = styled(motion.div)`
+    position: relative;
+    margin-left: 32px;
+`
+
+const CarouselInner = styled(motion.div)`
     display: flex;
 `
-const SliderItem = styled.div`
-    position: relative;
 
-    width: 300px;
-    height: 100%;
-    overflow: hidden;
+const CarouselItem = styled(motion.div)<{ url: string }>`
+    height: 420px;
+    min-width: 70%;
 
-    flex-shrink: 0;
-
-    margin-right: 12px;
-    background-color: red;
-`
-const SliderImage = styled.div<{ url: string }>`
-    position: absolute;
-    left: -100px;
-    width: 400px;
-    height: 100%;
+    &:not(:last-child) {
+        margin-right: 18px;
+    }
 
     background-image: ${({ url }) => `url(${url})`};
     background-position: center;
     background-size: cover;
+    border-radius: 7px;
 `
-
-const StickyWrapper = styled.div`
-    position: sticky;
-    top: 0;
-    height: 100vh;
-`
-
-const Header = styled.div`
-    padding: 40px 32px;
-`
-
-function lerp(start: number, end: number, t: number) {
-    return `${start * (1 - t) + end * t}`
-}
 
 function ImageGallery() {
     const [selectedImage, setSelectedImage] = useState('')
 
-    const currentX = useRef<number>(0)
-    const scrollPos = useRef<number>(0)
+    const [carouselWidth, setCarouselWidth] = useState(0)
 
-    const sliderRef = useRef<HTMLDivElement>(null)
-    const wrapperRef = useRef<HTMLDivElement>(null)
-
-    const imageRefs = useRef<HTMLDivElement[]>([])
-
-    const [reached, setReached] = useState(false)
-
-    const init = () => {
-        const sliderSCrollWidth = sliderRef.current?.scrollWidth
-
-        if (wrapperRef.current && sliderSCrollWidth) {
-            wrapperRef.current.style.height = `calc(${sliderSCrollWidth}px + 100vh)`
-            // scrollHeightRef.current!.style.height = `${sliderSCrollWidth}px`
-        }
-    }
-
-    function animateImage() {
-        const ratio = currentX.current / 400
-
-        if (ratio < 0) return
-
-        if (imageRefs.current) {
-            imageRefs.current.forEach((image, idx) => {
-                const intersectionRatio = ratio - idx * 0.7
-
-                // eslint-disable-next-line no-param-reassign
-                image.style.transform = `translateX(${
-                    intersectionRatio! * 70
-                }px)`
-            })
-        }
-    }
-
-    function animate() {
-        // console.log('currentX.current', currentX.current)
-        currentX.current = Number(
-            parseFloat(
-                lerp(
-                    currentX.current,
-                    scrollPos.current - wrapperRef.current!.offsetTop,
-                    0.05
-                )
-            ).toFixed(2)
-        )
-
-        scrollPos.current = window.scrollY
-
-        if (sliderRef.current) {
-            sliderRef.current.style.transform = `translate(-${currentX.current}px, -50%)`
-        }
-        animateImage()
-        requestAnimationFrame(animate)
-    }
+    const carouselRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
-        init()
-        // animate()
-
-        window.addEventListener('scroll', () => {
-            if (wrapperRef.current!.offsetTop <= window.scrollY) {
-                setReached(true)
-            } else {
-                setReached(false)
-            }
-        })
+        if (carouselRef.current) {
+            setCarouselWidth(
+                carouselRef.current.scrollWidth -
+                    carouselRef.current.offsetWidth
+            )
+        }
     }, [])
 
-    useEffect(() => {
-        if (reached) {
-            animate()
-        }
-    }, [reached])
     return (
-        <div ref={wrapperRef}>
-            <StickyWrapper>
-                <Header>
-                    <SectionTitle />
+        <Wrapper>
+            <Header>
+                <SectionTitle />
+                <SectionDescription />
+            </Header>
 
-                    <SectionDescription />
-                </Header>
-                {/* <Slider ref={sliderRef}>
-                    <SliderInnder>
-                        {images.map((url, index) => {
-                            return (
-                                <SliderItem>
-                                    <SliderImage
-                                        url={url}
-                                        // eslint-disable-next-line no-return-assign
-                                        ref={(el) =>
-                                            (imageRefs.current[index] = el!)
-                                        }
-                                        onClick={() => setSelectedImage(url)}
-                                    />
-                                </SliderItem>
-                            )
-                        })}
-                    </SliderInnder>
-                </Slider> */}
-            </StickyWrapper>
+            <Carousel ref={carouselRef}>
+                <CarouselInner
+                    drag="x"
+                    dragConstraints={{ right: 0, left: -carouselWidth }}
+                >
+                    {images.map((image) => {
+                        return (
+                            <CarouselItem
+                                url={image}
+                                onClick={() => setSelectedImage(image)}
+                            />
+                        )
+                    })}
+                </CarouselInner>
+            </Carousel>
 
             {selectedImage && (
                 <ImageGalleryModal
@@ -182,7 +92,7 @@ function ImageGallery() {
                     onClose={() => setSelectedImage('')}
                 />
             )}
-        </div>
+        </Wrapper>
     )
 }
 

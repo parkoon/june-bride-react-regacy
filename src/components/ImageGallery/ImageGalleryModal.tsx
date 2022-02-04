@@ -4,6 +4,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { MdClose } from 'react-icons/md'
 import Slider, { Settings } from 'react-slick'
 import { useScrollBlock } from '../../hooks/useScrollBlock'
+import 'slick-carousel/slick/slick-theme.css'
+import 'slick-carousel/slick/slick.css'
 
 const up = keyframes`
   from {
