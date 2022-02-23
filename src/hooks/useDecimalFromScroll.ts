@@ -14,16 +14,22 @@ function useDecimalFromScroll({
 }: UseDecimalFromScrollOptions = {}) {
     const [value, setValue] = useState(start)
     useEffect(() => {
-        window.addEventListener('scroll', () => {
+        const handleScroll = () => {
             const scroll =
                 window.pageYOffset || document.documentElement.scrollTop
 
             const amount = (scroll * intensity) / 100
 
-            const decimal = (start * 100 + (increase ? amount : -amount)) / 100
+            const result = Math.min(
+                (start * 100 + (increase ? amount : -amount)) / 100,
+                end
+            )
 
-            setValue(Math.min(decimal, end))
-        })
+            setValue(result)
+        }
+        window.addEventListener('scroll', handleScroll)
+
+        return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
     return value
