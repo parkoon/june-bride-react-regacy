@@ -1,0 +1,32 @@
+import { useEffect, useState } from 'react'
+
+type UseDecimalFromScrollOptions = {
+    start?: number
+    end?: number
+    increase?: boolean
+    intensity?: number
+}
+function useDecimalFromScroll({
+    start = 1,
+    end = 100,
+    increase = true,
+    intensity = 1,
+}: UseDecimalFromScrollOptions = {}) {
+    const [value, setValue] = useState(start)
+    useEffect(() => {
+        window.addEventListener('scroll', () => {
+            const scroll =
+                window.pageYOffset || document.documentElement.scrollTop
+
+            const amount = (scroll * intensity) / 100
+
+            const decimal = (start * 100 + (increase ? amount : -amount)) / 100
+
+            setValue(Math.min(decimal, end))
+        })
+    }, [])
+
+    return value
+}
+
+export default useDecimalFromScroll
