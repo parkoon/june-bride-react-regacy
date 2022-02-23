@@ -15,7 +15,12 @@ const Wrapper = styled.div<{ scale?: number }>`
 `
 
 function LandingImage() {
-    const decimal = useDecimalFromScroll({ start: 1, end: 1.3, intensity: 3.5 })
+    const decimal = useDecimalFromScroll({
+        start: 1,
+        end: 1.3,
+        speed: 2,
+        height: 4000,
+    })
     return <Wrapper style={{ transform: `scale(${decimal})` }} />
 }
 
