@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { getScrollHeight, getWindowScroll } from '../utils/window'
 
 type Opacity = {
@@ -9,7 +9,7 @@ type UseFadeInOutOptions = {
     areaHeight?: number
     opacity: [Opacity, Opacity, Opacity]
 }
-function useFadeInOut({ areaHeight, opacity }: UseFadeInOutOptions) {
+function useFadeInOut<T>({ opacity, areaHeight }: UseFadeInOutOptions) {
     const [value, setValue] = useState(opacity[0].value)
 
     useEffect(() => {
@@ -37,7 +37,7 @@ function useFadeInOut({ areaHeight, opacity }: UseFadeInOutOptions) {
                 Math.abs(posX.turning - posX.end)
             )
             const downGraphYIntercept =
-                opacity[2].value - downGraphSlope * posX.turning
+                opacity[1].value - downGraphSlope * posX.turning
 
             if (scroll < posX.start) {
                 return
