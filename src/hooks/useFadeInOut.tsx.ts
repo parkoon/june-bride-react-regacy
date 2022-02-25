@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getScrollHeight, getWindowScroll } from '../utils/window'
 
 type Opacity = {
@@ -9,7 +9,7 @@ type UseFadeInOutOptions = {
     areaHeight?: number
     opacity: [Opacity, Opacity, Opacity]
 }
-function useFadeInOut<T>({ opacity, areaHeight }: UseFadeInOutOptions) {
+function useFadeInOut({ opacity, areaHeight }: UseFadeInOutOptions) {
     const [value, setValue] = useState(opacity[0].value)
 
     useEffect(() => {
