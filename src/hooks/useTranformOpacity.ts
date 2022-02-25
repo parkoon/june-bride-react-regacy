@@ -37,10 +37,11 @@ function useTransformOpacity({
 
             const triggerPoint = trigger.height * parseInt(trigger.y, 10) * 0.01
 
-            const y = DEFAULT_TRANSFORM_Y - (scroll - triggerPoint) * slope
+            if (scroll < triggerPoint) return
 
-            const opacity =
-                ((scroll - triggerPoint) / DEFAULT_TRANSFORM_Y) * slope
+            const y = initialValues.y - (scroll - triggerPoint) * slope
+
+            const opacity = ((scroll - triggerPoint) / initialValues.y) * slope
 
             if (y <= 0 && opacity > 1) {
                 return
