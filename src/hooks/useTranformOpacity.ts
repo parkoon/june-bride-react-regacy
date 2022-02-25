@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getScrollHeight, getWindowScroll } from '../utils/window'
 
-const DEFAULT_TRANSFORM_Y = 20
+const DEFAULT_TRANSFORM_Y = 30
 const DEFAULT_SLOPE = 0.05
 const DEFAULT_OPACITY = 0
 
@@ -31,26 +31,29 @@ function useTransformOpacity({
     },
 }: UseTransformOpacityOptions = {}) {
     const [value, setValue] = useState(initialValues)
+
     useEffect(() => {
         const handleScroll = () => {
             const scroll = getWindowScroll()
 
             const triggerPoint = trigger.height * parseInt(trigger.y, 10) * 0.01
 
-            if (scroll < triggerPoint) return
+            if (scroll <= triggerPoint) {
+                setValue(initialValues)
+                return
+            }
 
             const y = Math.round(
                 initialValues.y - (scroll - triggerPoint) * slope
             )
 
-            const opacity = ((scroll - triggerPoint) / initialValues.y) * slope
+            const opacity = Number(
+                (((scroll - triggerPoint) / initialValues.y) * slope).toFixed(1)
+            )
 
-            if (opacity > 1) {
-                return
-            }
             setValue({
-                y,
-                opacity,
+                y: y < 0 ? 0 : y,
+                opacity: opacity > 1 ? 1 : opacity,
             })
         }
         window.addEventListener('scroll', handleScroll)
