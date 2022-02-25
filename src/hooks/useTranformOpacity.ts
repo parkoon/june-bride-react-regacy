@@ -39,11 +39,13 @@ function useTransformOpacity({
 
             if (scroll < triggerPoint) return
 
-            const y = initialValues.y - (scroll - triggerPoint) * slope
+            const y = Math.round(
+                initialValues.y - (scroll - triggerPoint) * slope
+            )
 
             const opacity = ((scroll - triggerPoint) / initialValues.y) * slope
 
-            if (y <= 0 && opacity > 1) {
+            if (opacity > 1) {
                 return
             }
             setValue({
