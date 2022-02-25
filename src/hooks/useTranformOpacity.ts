@@ -5,16 +5,18 @@ const DEFAULT_TRANSFORM_Y = 20
 const DEFAULT_SLOPE = 0.05
 const DEFAULT_OPACITY = 0
 
+export type TransformOpacityTrigger = {
+    height: number
+    y: `${number}%`
+}
+
 type UseTransformOpacityOptions = {
     slope?: number
     initialValues?: {
         y: number
         opacity: number
     }
-    trigger?: {
-        height: number
-        y: `${number}%`
-    }
+    trigger?: TransformOpacityTrigger
 }
 
 function useTransformOpacity({
