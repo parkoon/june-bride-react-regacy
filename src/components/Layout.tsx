@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import { HelmetProvider } from 'react-helmet-async'
 import GlobalStyle from './GlobalStyle'
 import Head from './Head'
 
@@ -29,11 +30,13 @@ type Props = {
 }
 function Layout({ children }: Props) {
     return (
-        <Wrapper>
-            <Head />
-            <GlobalStyle />
-            <Content>{children}</Content>
-        </Wrapper>
+        <HelmetProvider>
+            <Wrapper>
+                <Head />
+                <GlobalStyle />
+                <Content>{children}</Content>
+            </Wrapper>
+        </HelmetProvider>
     )
 }
 
