@@ -6,10 +6,11 @@ const Wrapper = styled.div`
     position: fixed;
     top: 120px;
 
+    width: 100%;
     text-align: center;
 
     p {
-        font-size: 15px;
+        font-size: 17px;
         line-height: 24px;
         color: #fff;
 
