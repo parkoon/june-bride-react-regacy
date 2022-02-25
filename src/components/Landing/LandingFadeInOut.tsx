@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 `
 
 function LandingFadeInOut() {
-    const opacity = useFadeInOut<HTMLDivElement>({
+    const opacity = useFadeInOut({
         areaHeight: 4000,
         opacity: [
             { trigger: '10%', value: 0.3 },
