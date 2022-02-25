@@ -12,7 +12,7 @@ type LandingOpacityProps = {
 }
 function LandingOpacity({ children }: LandingOpacityProps) {
     const value = useSlope({
-        x: ['20%', '100%'],
+        x: ['20%', '80%'],
         y: [1, 0],
     })
 
