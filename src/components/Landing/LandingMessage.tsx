@@ -4,7 +4,7 @@ import useTransformOpacity from '../../hooks/useTranformOpacity'
 
 const Wrapper = styled.div`
     position: fixed;
-    top: 20%;
+    top: 120px;
 
     text-align: center;
 
