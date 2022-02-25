@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import React from 'react'
-import useDecimalFromScroll from '../../hooks/useDecimalFromScroll'
+import { useSlope } from './hooks'
 
 const Wrapper = styled.section`
     width: 100%;
@@ -11,14 +11,12 @@ type LandingOpacityProps = {
     children: React.ReactNode
 }
 function LandingOpacity({ children }: LandingOpacityProps) {
-    const decimal = useDecimalFromScroll({
-        start: 1,
-        end: 0,
-        triggerPoint: 15,
-        height: 4000,
+    const value = useSlope({
+        x: ['20%', '100%'],
+        y: [1, 0],
     })
 
-    return <Wrapper style={{ opacity: decimal }}>{children}</Wrapper>
+    return <Wrapper style={{ opacity: value }}>{children}</Wrapper>
 }
 
 export default LandingOpacity

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import useDecimalFromScroll from '../../hooks/useDecimalFromScroll'
+import { useSlope } from './hooks'
 
 const Wrapper = styled.div<{ scale?: number }>`
     position: fixed;
@@ -15,13 +15,12 @@ const Wrapper = styled.div<{ scale?: number }>`
 `
 
 function LandingImage() {
-    const decimal = useDecimalFromScroll({
-        start: 1,
-        end: 1.3,
-        speed: 2,
-        height: 4000,
+    const value = useSlope({
+        y: [1, 1.3],
+        x: ['0%', '30%'],
     })
-    return <Wrapper style={{ transform: `scale(${decimal})` }} />
+
+    return <Wrapper style={{ transform: `scale(${value})` }} />
 }
 
 export default LandingImage
