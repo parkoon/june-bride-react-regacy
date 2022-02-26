@@ -1,4 +1,3 @@
-import Date from './components/Date'
 import Landing from './components/Landing'
 import Layout from './components/Layout'
 import When from './components/When'
