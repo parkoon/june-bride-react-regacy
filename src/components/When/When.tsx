@@ -83,7 +83,7 @@ const Image = styled.div<{ scale?: number }>`
     width: 100%;
     height: 100vh;
 
-    background-image: url('https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80');
+    background-image: url('https://images.unsplash.com/photo-1604881990409-b9f246db39da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80');
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover;
