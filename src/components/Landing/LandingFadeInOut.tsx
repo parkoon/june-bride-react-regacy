@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import useFadeInOut from '../../hooks/useFadeInOut.tsx'
+import { useFadeInOut } from './hooks'
 
 const Wrapper = styled.div`
     position: fixed;
@@ -12,7 +12,6 @@ const Wrapper = styled.div`
 
 function LandingFadeInOut() {
     const opacity = useFadeInOut({
-        areaHeight: 4000,
         opacity: [
             { trigger: '10%', value: 0.3 },
             { trigger: '40%', value: 0.8 },
