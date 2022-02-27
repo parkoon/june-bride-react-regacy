@@ -5,10 +5,9 @@ import BouncingHeart from '../Lottie/BouncingHeart'
 
 const Wrapper = styled.div`
     height: 100vh;
-    position: fixed;
+
+    position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
 
     color: #fff;
 
@@ -17,8 +16,6 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    height: 100%;
 `
 
 const Animate = styled.div<{ visible: boolean; delay?: number }>`
@@ -112,7 +109,7 @@ function WhenData({ visible }: WhenDataProps) {
                 </Animate>
                 <Footer>
                     <Animate visible={visible} delay={0.6}>
-                        2022년 6월 18일 토요일 오후 2시 <br />
+                        2022년 6월 18일 토요일 12시 30분 <br />
                         <p>
                             서울특별시 강동구 천호대로 1077 이스트센트럴타워
                             35~36층

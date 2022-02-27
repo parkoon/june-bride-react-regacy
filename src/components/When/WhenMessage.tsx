@@ -3,10 +3,9 @@ import styled from '@emotion/styled'
 import { useInView } from 'react-intersection-observer'
 
 const Wrapper = styled.div<{ visible: boolean }>`
-    padding-top: 150px;
-
     height: 240px;
-
+    padding: 0 24px;
+    padding-top: 150px;
     h3 {
         color: rgb(29, 29, 31);
         font-size: 40px;

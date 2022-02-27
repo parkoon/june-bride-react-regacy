@@ -62,11 +62,9 @@ export const useSlope = ({
 }
 
 const Wrapper = styled.div`
-    height: 200vh;
-    position: relative;
+    height: 300vh;
 
-    margin: 0 24px;
-
+    /* ghost icon */
     img {
         position: fixed;
         margin: 0 auto;
@@ -77,9 +75,8 @@ const Wrapper = styled.div`
 `
 
 const Image = styled.div<{ scale?: number }>`
-    position: fixed;
+    position: sticky;
     top: 0;
-    left: 0;
     width: 100%;
     height: 100vh;
 
@@ -94,7 +91,7 @@ function When() {
 
     const ref = React.useRef<HTMLDivElement>(null)
     const value = useSlope({
-        x: ['10%', '60%'],
+        x: ['10%', '80%'],
         y: [1, 70],
 
         wrapper: ref,
@@ -111,7 +108,7 @@ function When() {
         y: [0, 0.8],
         wrapper: ref,
         onChange(v) {
-            setShow(v > 0.7)
+            setShow(v > 0.5)
         },
     })
 
@@ -119,15 +116,17 @@ function When() {
         <Wrapper ref={ref}>
             <WhenMessage />
 
-            <img
-                src={GhostIcon}
-                alt=""
-                width={64}
-                style={{
-                    transform: `scale(${value})`,
-                    opacity,
-                }}
-            />
+            {!show && (
+                <img
+                    src={GhostIcon}
+                    alt=""
+                    width={64}
+                    style={{
+                        transform: `scale(${value})`,
+                        opacity,
+                    }}
+                />
+            )}
             <Image style={{ opacity: opacity2 }} />
             <WhenData visible={show} />
         </Wrapper>
