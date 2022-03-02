@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
 import React, { useEffect, useState } from 'react'
-import GhostIcon from '../../assets/svg/ghost.svg'
 import { getWindowScroll } from '../../utils/window'
-import WhenData from './WhenData'
+import FlipCountdown from '../@common/FlipCountdown'
+import WhenInfo from './WhenInfo'
 import WhenMessage from './WhenMessage'
 
 type UseSlopeOptions = {
@@ -89,6 +89,8 @@ const Image = styled.div<{ scale?: number }>`
 function When() {
     const [show, setShow] = useState(false)
 
+    useEffect(() => {}, [])
+
     const ref = React.useRef<HTMLDivElement>(null)
     const value = useSlope({
         x: ['10%', '80%'],
@@ -115,8 +117,12 @@ function When() {
     return (
         <Wrapper ref={ref}>
             <WhenMessage />
+            <WhenInfo />
+            {/* <FlipCountdown
+                endAt="2022-12-12 01:26:58" // Date/Time
+            /> */}
 
-            {!show && (
+            {/* {!show && (
                 <img
                     src={GhostIcon}
                     alt=""
@@ -128,7 +134,7 @@ function When() {
                 />
             )}
             <Image style={{ opacity: opacity2 }} />
-            <WhenData visible={show} />
+            <WhenData visible={show} /> */}
         </Wrapper>
     )
 }

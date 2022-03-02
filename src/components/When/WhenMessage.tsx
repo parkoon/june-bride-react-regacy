@@ -1,19 +1,27 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { useInView } from 'react-intersection-observer'
+import GhostIcon from './GhostIcon'
 
 const Wrapper = styled.div<{ visible: boolean }>`
-    height: 240px;
-    padding: 0 24px;
-    padding-top: 150px;
-    h3 {
-        color: rgb(29, 29, 31);
-        font-size: 40px;
-        font-weight: 700;
-        height: 48px;
-        line-height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
-        transition: 0.35s ease;
+    background: rgba(0, 0, 0, 0.2vvv);
+
+    height: 50vh;
+    padding: 0 24px;
+
+    h3 {
+        display: flex;
+        align-items: center;
+
+        font-size: 42px;
+        font-weight: 700;
+
+        transition: 0.7s ease;
         opacity: 0;
         transform: translateY(50px);
 
@@ -24,17 +32,48 @@ const Wrapper = styled.div<{ visible: boolean }>`
                 transform: translateY(0px);
             `}
     }
+
+    h3:not(:last-child) {
+        margin-bottom: 18px;
+    }
+
+    h3:nth-of-type(2) {
+        /* transition-delay: 0.25s; */
+        ${({ visible }) =>
+            visible
+                ? css`
+                      transition-delay: 0.25s;
+                  `
+                : css`
+                      transition-delay: 0;
+                  `}
+    }
+    h3:nth-of-type(3) {
+        ${({ visible }) =>
+            visible
+                ? css`
+                      transition-delay: 0.5s;
+                  `
+                : css`
+                      transition-delay: 0;
+                  `}
+    }
+`
+
+const Icon = styled(GhostIcon)`
+    margin-right: 12px;
 `
 
 function WhenMessage() {
     const [textRef, inView] = useInView({
-        threshold: 1,
+        threshold: 0.5,
     })
     return (
         <Wrapper ref={textRef} visible={inView}>
+            <h3>인간에게</h3>
+            <h3>해를 끼치지 않는</h3>
             <h3>
-                인간에게 해를 끼치지 않는 <br />
-                길한 날.
+                <Icon /> 길한 날.
             </h3>
         </Wrapper>
     )

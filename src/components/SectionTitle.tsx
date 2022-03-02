@@ -9,11 +9,10 @@ const TitleLetter = styled.span`
 `
 
 function SectionTitle() {
-    const { ref, inView, entry } = useInView({
+    const { ref, inView } = useInView({
         /* Optional options */
         threshold: 0,
     })
-    console.log('inView', inView)
     return (
         <div ref={ref}>
             <TextRevealAnimation
