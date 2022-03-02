@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
 import React, { useEffect, useState } from 'react'
 import { getWindowScroll } from '../../utils/window'
-import FlipCountdown from '../@common/FlipCountdown'
 import WhenInfo from './WhenInfo'
 import WhenMessage from './WhenMessage'
 
@@ -64,6 +63,8 @@ export const useSlope = ({
 const Wrapper = styled.div`
     height: 300vh;
 
+    background-color: rgba(0, 0, 0, 0.4);
+
     /* ghost icon */
     img {
         position: fixed;
@@ -74,67 +75,11 @@ const Wrapper = styled.div`
     }
 `
 
-const Image = styled.div<{ scale?: number }>`
-    position: sticky;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-
-    background-image: url('https://images.unsplash.com/photo-1604881990409-b9f246db39da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80');
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    background-size: cover;
-`
-
 function When() {
-    const [show, setShow] = useState(false)
-
-    useEffect(() => {}, [])
-
-    const ref = React.useRef<HTMLDivElement>(null)
-    const value = useSlope({
-        x: ['10%', '80%'],
-        y: [1, 70],
-
-        wrapper: ref,
-    })
-    const opacity = useSlope({
-        x: ['0%', '15%'],
-        y: [0, 1],
-
-        wrapper: ref,
-    })
-
-    const opacity2 = useSlope({
-        x: ['20%', '100%'],
-        y: [0, 0.8],
-        wrapper: ref,
-        onChange(v) {
-            setShow(v > 0.5)
-        },
-    })
-
     return (
-        <Wrapper ref={ref}>
+        <Wrapper>
             <WhenMessage />
             <WhenInfo />
-            {/* <FlipCountdown
-                endAt="2022-12-12 01:26:58" // Date/Time
-            /> */}
-
-            {/* {!show && (
-                <img
-                    src={GhostIcon}
-                    alt=""
-                    width={64}
-                    style={{
-                        transform: `scale(${value})`,
-                        opacity,
-                    }}
-                />
-            )}
-            <Image style={{ opacity: opacity2 }} />
-            <WhenData visible={show} /> */}
         </Wrapper>
     )
 }

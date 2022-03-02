@@ -11,7 +11,7 @@ const Wrapper = styled.div<{ visible: boolean }>`
 
     background: rgba(0, 0, 0, 0.2vvv);
 
-    height: 50vh;
+    height: 100vh;
     padding: 0 24px;
 
     h3 {
@@ -38,7 +38,6 @@ const Wrapper = styled.div<{ visible: boolean }>`
     }
 
     h3:nth-of-type(2) {
-        /* transition-delay: 0.25s; */
         ${({ visible }) =>
             visible
                 ? css`
