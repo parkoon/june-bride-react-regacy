@@ -9,8 +9,6 @@ const Wrapper = styled.div<{ visible: boolean }>`
     align-items: center;
     flex-direction: column;
 
-    background: rgba(0, 0, 0, 0.2vvv);
-
     height: 100vh;
     padding: 0 24px;
 

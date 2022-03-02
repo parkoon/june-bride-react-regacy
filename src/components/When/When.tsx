@@ -62,17 +62,6 @@ export const useSlope = ({
 
 const Wrapper = styled.div`
     height: 300vh;
-
-    background-color: rgba(0, 0, 0, 0.4);
-
-    /* ghost icon */
-    img {
-        position: fixed;
-        margin: 0 auto;
-        left: 0;
-        right: 0;
-        top: 50%;
-    }
 `
 
 function When() {
