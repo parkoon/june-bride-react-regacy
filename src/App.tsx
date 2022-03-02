@@ -15,6 +15,8 @@ function App() {
         <Layout>
             <Landing />
             <When />
+            {/* <EmptyBox opacity={0.1} /> */}
+            {/* <When /> */}
             <EmptyBox opacity={0.1} />
             <EmptyBox opacity={0.2} />
             <EmptyBox opacity={0.3} />
