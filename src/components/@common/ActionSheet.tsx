@@ -12,6 +12,8 @@ const Wrapper = styled.div<{ height: number }>`
     background-color: rgba(255, 255, 255, 0.72);
     backdrop-filter: saturate(180%) blur(20px);
     border-top: 1px solid rgba(0, 0, 0, 0.16);
+
+    transform: translateY(100%);
 `
 
 const Content = styled.div`
