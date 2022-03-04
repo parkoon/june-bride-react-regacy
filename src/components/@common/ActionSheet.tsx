@@ -4,6 +4,7 @@ import React, { useLayoutEffect, useRef } from 'react'
 const Wrapper = styled.div<{ height: number }>`
     position: fixed;
     bottom: 0;
+    left: 0;
 
     width: 100%;
 
