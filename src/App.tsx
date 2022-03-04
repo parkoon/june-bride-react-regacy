@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Landing from './components/Landing'
 import Layout from './components/Layout'
+import Map from './components/Map'
 import When from './components/When'
 
 const EmptyBox = styled.div<{ opacity: number }>`
@@ -17,7 +18,9 @@ function App() {
             <When />
             {/* <EmptyBox opacity={0.1} /> */}
             {/* <When /> */}
-            <EmptyBox opacity={0.1} />
+            {/* <EmptyBox opacity={0.1} /> */}
+            <Map />
+            {/* <BankAccount /> */}
             <EmptyBox opacity={0.2} />
             <EmptyBox opacity={0.3} />
             {/* <Landing />
