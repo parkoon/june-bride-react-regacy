@@ -3,7 +3,7 @@ import { useInView } from 'react-intersection-observer'
 import SectionParagraph from '../@common/SectionParagraph'
 import SectionTitle from '../@common/SectionTitle'
 import MapActionSheet from './MapActionSheet'
-import MapKaKao from './MapKaKao'
+// import MapKaKao from './MapKaKao'
 import SubwayLineBadge from './SubwayLineBadge'
 
 const Wrapper = styled.section`
@@ -23,7 +23,7 @@ function Map() {
                 <SubwayLineBadge />
                 강동역 1번 출구에서 <Highlight>16m</Highlight>
             </SectionParagraph>
-            <MapKaKao visible={inView} />
+            {/* <MapKaKao visible={inView} /> */}
             <MapActionSheet visible={inView} />
         </Wrapper>
     )
