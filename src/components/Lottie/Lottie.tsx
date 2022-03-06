@@ -1,12 +1,13 @@
 import { CSSProperties, useEffect, useRef } from 'react'
-import lottie from 'lottie-web'
+import lottie, { AnimationConfig } from 'lottie-web'
 
 type Props = {
     src: Record<string, unknown>
     size?: number
     style?: CSSProperties
+    animationConfig?: Omit<AnimationConfig, 'container'>
 }
-function Lottie({ src, style, size = 64 }: Props) {
+function Lottie({ src, style, size = 64, animationConfig }: Props) {
     const lottieRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -14,9 +15,10 @@ function Lottie({ src, style, size = 64 }: Props) {
             const animation = lottie.loadAnimation({
                 loop: true,
                 container: lottieRef.current,
-                autoplay: true,
+                autoplay: false,
                 animationData: src,
                 renderer: 'svg',
+                ...animationConfig,
             })
 
             animation.setSpeed(1)
