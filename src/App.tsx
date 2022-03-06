@@ -1,5 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+import BankAccount from './components/BankAccount'
 import Landing from './components/Landing'
 import Layout from './components/Layout'
 import Loading from './components/Loading'
@@ -22,7 +23,7 @@ function App() {
             {/* <When /> */}
             {/* <EmptyBox opacity={0.1} /> */}
             <Map />
-            {/* <BankAccount /> */}
+            <BankAccount />
             <EmptyBox opacity={0.2} />
 
             <EmptyBox opacity={0.3} />
