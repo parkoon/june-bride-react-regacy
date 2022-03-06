@@ -1,6 +1,5 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import React, { forwardRef } from 'react'
 import SectionParagraph from '../@common/SectionParagraph'
 import SectionTitle from '../@common/SectionTitle'
 import CollectingMoney from '../Lottie/CollectingMoney'
