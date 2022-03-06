@@ -12,6 +12,7 @@
     "@types/node": "^16.11.19",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
+    "canvas-confetti": "^1.5.1",
     "emotion-reset": "^3.0.1",
     "framer-motion": "^6.2.7",
     "gsap": "^3.9.1",
@@ -54,6 +55,8 @@
   },
   "devDependencies": {
     "@arkweid/lefthook": "^0.7.7",
+    "@types/": "camwiegert/typical",
+    "@types/canvas-confetti": "^1.4.2",
     "@types/react-helmet": "^6.1.5",
     "@types/react-slick": "^0.23.8",
     "@typescript-eslint/eslint-plugin": "^5.9.1",
