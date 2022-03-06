@@ -16,9 +16,9 @@ function LandingPersonalMessage() {
     const opacity = useSlope({ x: ['0%', '10%'], y: [1, 0] })
     return (
         <Wrapper style={{ opacity }}>
-            김진아 님 <br />
-            바쁜 시간 내주셔서 <br />
-            감사합니다.
+            어떤 말을 쓸지 <br />
+            생각이 안나는데 <br />
+            괜찮으시겠어요?
         </Wrapper>
     )
 }
