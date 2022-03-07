@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { useEffect, useRef, useState } from 'react'
 import { useScrollBlock } from '../../hooks/useScrollBlock'
-import Confetti from './Confetti'
+// import Confetti from './Confetti'
 import MessageTyping from './MessageTyping'
 
 const Wrapper = styled.div`
@@ -48,7 +48,7 @@ function Loading() {
     }, [loaded])
     return (
         <Wrapper ref={ref}>
-            {loaded && <Confetti />}
+            {/* {loaded && <Confetti />} */}
             <MessageTyping onFinish={() => setLoaded(true)} />
         </Wrapper>
     )
