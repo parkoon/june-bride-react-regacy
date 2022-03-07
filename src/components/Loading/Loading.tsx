@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { useEffect, useRef, useState } from 'react'
+import { useScrollBlock } from '../../hooks/useScrollBlock'
 import Confetti from './Confetti'
 import MessageTyping from './MessageTyping'
 
@@ -28,6 +29,8 @@ function Loading() {
     const [loaded, setLoaded] = useState(false)
     const ref = useRef<HTMLDivElement>(null)
 
+    const [blockScroll, allowScroll] = useScrollBlock()
+
     useEffect(() => {
         if (!ref.current) return
 
@@ -38,6 +41,9 @@ function Loading() {
                 fill: 'forwards',
                 delay: 1.2 * 1000,
             })
+            allowScroll()
+        } else {
+            blockScroll()
         }
     }, [loaded])
     return (
