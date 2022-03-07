@@ -5,6 +5,7 @@ import Landing from './components/Landing'
 import Layout from './components/Layout'
 import Loading from './components/Loading'
 import Map from './components/Map'
+import PhotoGallery from './components/PhotoGallery'
 import When from './components/When'
 
 const EmptyBox = styled.div<{ opacity: number }>`
@@ -14,31 +15,28 @@ const EmptyBox = styled.div<{ opacity: number }>`
     `}
 `
 function App() {
+    const urlParams = new URLSearchParams(window.location.search)
+    const env = urlParams.get('env')
+
+    if (env === 'dev') {
+        return (
+            <Layout>
+                <Loading />
+
+                <EmptyBox opacity={0.2} />
+                <EmptyBox opacity={0.3} />
+                <EmptyBox opacity={0.3} />
+            </Layout>
+        )
+    }
     return (
         <Layout>
             <Loading />
             <Landing />
             <When />
-            {/* <EmptyBox opacity={0.1} /> */}
-            {/* <When /> */}
-            {/* <EmptyBox opacity={0.1} /> */}
             <Map />
             <BankAccount />
-            <EmptyBox opacity={0.2} />
-
-            <EmptyBox opacity={0.3} />
-            {/* <Landing />
-
-            <Date /> */}
-            {/* <FakeLoadingProvider>
-                <Welcome />
-                <WelcomeMessage />
-                <ScrollDownAnimation />
-            </FakeLoadingProvider> */}
-            {/* <WeddingBanner />
-            <ImageGallery />
-            <Calendar />
-            <WayToCome /> */}
+            <PhotoGallery />
         </Layout>
     )
 }
