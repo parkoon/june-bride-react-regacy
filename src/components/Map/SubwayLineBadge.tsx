@@ -10,7 +10,7 @@ const slide = keyframes`
     }
 `
 
-const Wrapper = styled.div`
+const Wrapper = styled.span`
     display: inline-flex;
     justify-content: center;
     align-items: center;
