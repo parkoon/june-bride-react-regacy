@@ -1,9 +1,10 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import BankAccount from './components/BankAccount'
+import GuestBook from './components/GuestBook'
 import Landing from './components/Landing'
 import Layout from './components/Layout'
-import Loading from './components/Loading'
+// import Loading from './components/Loading'
 import Map from './components/Map'
 import PhotoGallery from './components/PhotoGallery'
 import When from './components/When'
@@ -21,22 +22,21 @@ function App() {
     if (env === 'dev') {
         return (
             <Layout>
-                <Loading />
-
                 <EmptyBox opacity={0.2} />
-                <EmptyBox opacity={0.3} />
+                <GuestBook />
                 <EmptyBox opacity={0.3} />
             </Layout>
         )
     }
     return (
         <Layout>
-            <Loading />
+            {/* <Loading /> */}
             <Landing />
             <When />
             <Map />
             <BankAccount />
             <PhotoGallery />
+            <GuestBook />
         </Layout>
     )
 }
