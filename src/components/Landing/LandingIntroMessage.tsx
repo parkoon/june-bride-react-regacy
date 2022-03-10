@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { useSlope } from './hooks'
+import { useLandingSlope } from './hooks'
 
 const Wrapper = styled.p`
     position: fixed;
@@ -11,9 +11,12 @@ const Wrapper = styled.p`
     color: #fff;
     text-align: center;
     line-height: 45px;
+    letter-spacing: 1px;
+
+    font-weight: bold;
 `
-function LandingPersonalMessage() {
-    const opacity = useSlope({ x: ['0%', '10%'], y: [1, 0] })
+function LandingIntroMessage() {
+    const opacity = useLandingSlope({ x: ['0%', '10%'], y: [1, 0] })
     return (
         <Wrapper style={{ opacity }}>
             어떤 말을 쓸지 <br />
@@ -23,4 +26,4 @@ function LandingPersonalMessage() {
     )
 }
 
-export default LandingPersonalMessage
+export default LandingIntroMessage

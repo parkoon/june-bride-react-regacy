@@ -2,11 +2,14 @@ import { useEffect, useMemo, useState } from 'react'
 import { getWindowScroll } from '../../utils/window'
 import { getLandingHeight } from './helpers'
 
-type UseSlopeOptions = {
+type UseLandingSlopeOptions = {
     y: [number, number]
     x: [`${number}%`, `${number}%`]
 }
-export const useSlope = ({ y: [y1, y2], x: [x1, x2] }: UseSlopeOptions) => {
+export const useLandingSlope = ({
+    y: [y1, y2],
+    x: [x1, x2],
+}: UseLandingSlopeOptions) => {
     const area = getLandingHeight()
     const startX = useMemo(() => area * parseInt(x1, 10) * 0.01, [])
     const endX = useMemo(() => area * parseInt(x2, 10) * 0.01, [])
@@ -42,63 +45,6 @@ export const useSlope = ({ y: [y1, y2], x: [x1, x2] }: UseSlopeOptions) => {
     }, [])
 
     return result
-}
-
-type Opacity = {
-    trigger: `${number}%`
-    value: number
-}
-type UseFadeInOutOptions = {
-    opacity: [Opacity, Opacity, Opacity]
-}
-export const useFadeInOut = ({ opacity }: UseFadeInOutOptions) => {
-    const [value, setValue] = useState(opacity[0].value)
-
-    useEffect(() => {
-        const handleScroll = () => {
-            const scroll = getWindowScroll()
-            const height = getLandingHeight()
-
-            const posX = {
-                start: height * parseInt(opacity[0].trigger, 10) * 0.01,
-                turning: height * parseInt(opacity[1].trigger, 10) * 0.01,
-                end: height * parseInt(opacity[2].trigger, 10) * 0.01,
-            }
-
-            // 첫번째 그래프 (상향 그래프)
-            const upGraphSlope =
-                Math.abs(opacity[0].value - opacity[1].value) /
-                Math.abs(posX.start - posX.turning)
-
-            const upGraphYIntercept =
-                opacity[0].value - upGraphSlope * posX.start
-
-            // 두번째 그래프 (하향 그래프)
-            const downGraphSlope = -(
-                Math.abs(opacity[1].value - opacity[2].value) /
-                Math.abs(posX.turning - posX.end)
-            )
-            const downGraphYIntercept =
-                opacity[1].value - downGraphSlope * posX.turning
-
-            if (scroll < posX.start) {
-                return
-            }
-
-            if (scroll > posX.start && scroll < posX.turning) {
-                setValue(scroll * upGraphSlope + upGraphYIntercept)
-            }
-
-            if (scroll > posX.turning && scroll < height) {
-                setValue(scroll * downGraphSlope + downGraphYIntercept)
-            }
-        }
-        window.addEventListener('scroll', handleScroll)
-
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
-
-    return value
 }
 
 const DEFAULT_TRANSFORM_Y = 30

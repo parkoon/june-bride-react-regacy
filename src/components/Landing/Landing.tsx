@@ -1,15 +1,13 @@
-import LandingFadeInOut from './LandingFadeInOut'
 import LandingImage from './LandingImage'
 import LandingMessage from './LandingMessage'
 import LandingOpacity from './LandingOpacity'
-import LandingPersonalMessage from './LandingPersonalMessage'
+import LandingIntroMessage from './LandingIntroMessage'
 
 function Landing() {
     return (
         <LandingOpacity>
             <LandingImage />
-            <LandingPersonalMessage />
-            <LandingFadeInOut />
+            <LandingIntroMessage />
             <LandingMessage />
         </LandingOpacity>
     )

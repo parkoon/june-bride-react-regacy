@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import React from 'react'
 import { getLandingHeight } from './helpers'
-import { useSlope } from './hooks'
+import { useLandingSlope } from './hooks'
 
 const Wrapper = styled.section<{ height: `${number}px` }>`
     width: 100%;
@@ -14,8 +14,8 @@ type LandingOpacityProps = {
 function LandingOpacity({ children }: LandingOpacityProps) {
     const height = getLandingHeight()
 
-    const value = useSlope({
-        x: ['20%', '80%'],
+    const value = useLandingSlope({
+        x: ['50%', '90%'],
         y: [1, 0],
     })
 
