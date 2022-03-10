@@ -13,11 +13,6 @@ function Landing() {
             <LandingMessage />
         </LandingOpacity>
     )
-    // return (
-    //     <LandingOpacity>
-    //         <LandingImage />
-    //     </LandingOpacity>
-    // )
 }
 
 export default Landing
