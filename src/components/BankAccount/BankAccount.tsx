@@ -4,7 +4,7 @@ import { getWindowScroll } from '../../utils/window'
 import BankAccountInfo from './BankAccountInfo'
 
 const Wrapper = styled.div`
-    height: 230vh;
+    height: 320vh;
 
     background: beige;
 
@@ -87,14 +87,15 @@ function BankAccount() {
     const wrapper = useRef<HTMLDivElement>(null)
 
     const value = useSlope({ wrapper, x: ['0%', '100%'], y: [100, 0] })
+    const rotate = useSlope({ wrapper, x: ['0%', '100%'], y: [0, 180] })
 
     return (
         <Wrapper ref={wrapper}>
             <Sticky>
-                <BankAccountInfo secured />
+                <BankAccountInfo secured rotate={rotate} />
 
                 <Inner style={{ clipPath: `inset(0 ${value}% 0 0)` }}>
-                    <BankAccountInfo />
+                    <BankAccountInfo rotate={rotate} />
                 </Inner>
             </Sticky>
         </Wrapper>
