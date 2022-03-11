@@ -12,7 +12,7 @@ const Wrapper = styled.div`
     word-break: keep-all;
 
     p {
-        font-size: 20px;
+        font-size: 17px;
         line-height: 32px;
         color: #fff;
 
