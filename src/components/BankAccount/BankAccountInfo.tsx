@@ -1,7 +1,6 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import Gradient from '../@common/Gradient'
-import SectionTitle from '../@common/SectionTitle'
 import { Heading2, Paragraph } from '../@common/Typo'
 import LockIcon from './LockIcon'
 
@@ -48,7 +47,7 @@ function BankAccountInfo({
                 <Heading2 margin={0} reverse={secured}>
                     마음을
                 </Heading2>
-                <SectionTitle reverse={secured}>전해보세요.</SectionTitle>
+                <Heading2 reverse={secured}>전해보세요.</Heading2>
             </Gradient>
             <Paragraph reverse={secured} style={{ marginBottom: 42 }}>
                 선약이 있어서 결혼식에 참석을 하지 못해도 이해할 수 있어요.
