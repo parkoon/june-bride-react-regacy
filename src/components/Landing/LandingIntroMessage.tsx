@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import WavingHand from '../@common/WavingHand'
 import { useLandingSlope } from './hooks'
 
 const Wrapper = styled.p`
@@ -21,7 +22,7 @@ function LandingIntroMessage() {
         <Wrapper style={{ opacity }}>
             김근태님을 <br />
             박종혁 김진아 결혼식에 <br />
-            초대합니다.
+            초대합니다. <WavingHand />
         </Wrapper>
     )
 }
