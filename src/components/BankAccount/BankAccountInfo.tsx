@@ -54,12 +54,16 @@ function BankAccountInfo({
                 마음은 항상 열려 있어요.
             </Paragraph>
 
-            <Paragraph reverse={secured}>🤵 신랑 계좌번호</Paragraph>
-            <Paragraph reverse={secured} style={{ marginBottom: 12 }}>
+            <Paragraph reverse={secured} margin={4}>
+                🤵 신랑 계좌번호
+            </Paragraph>
+            <Paragraph reverse={secured} margin={12}>
                 신한은행 {secured ? '***-***-******' : '110-265-285679'}
             </Paragraph>
-            <Paragraph reverse={secured}>👰🏻 신부 계좌번호</Paragraph>
-            <Paragraph reverse={secured}>
+            <Paragraph reverse={secured} margin={4}>
+                👰🏻 신부 계좌번호
+            </Paragraph>
+            <Paragraph reverse={secured} margin={12}>
                 우리은행 {secured ? '****-****-******' : '1002-2458-658687'}
             </Paragraph>
 
