@@ -19,9 +19,9 @@ function LandingIntroMessage() {
     const opacity = useLandingSlope({ x: ['0%', '10%'], y: [1, 0] })
     return (
         <Wrapper style={{ opacity }}>
-            어떤 말을 쓸지 <br />
-            생각이 안나는데 <br />
-            괜찮으시겠어요?
+            김근태님을 <br />
+            박종혁 김진아 결혼식에 <br />
+            초대합니다.
         </Wrapper>
     )
 }
