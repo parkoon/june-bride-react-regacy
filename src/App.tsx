@@ -1,7 +1,9 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+import { useState } from 'react'
 import BankAccount from './components/BankAccount'
 import GuestBook from './components/GuestBook'
+import Intro from './components/Intro'
 import Landing from './components/Landing'
 import Layout from './components/Layout'
 // import Loading from './components/Loading'
@@ -19,24 +21,33 @@ function App() {
     const urlParams = new URLSearchParams(window.location.search)
     const env = urlParams.get('env')
 
+    const [introEnd, setIntroEnd] = useState(false)
+
     if (env === 'dev') {
         return (
             <Layout>
+                <Intro onEnd={() => setIntroEnd(true)} />
+                {introEnd && <Landing />}
                 <EmptyBox opacity={0.2} />
                 <GuestBook />
                 <EmptyBox opacity={0.3} />
             </Layout>
         )
     }
+
     return (
         <Layout>
-            {/* <Loading /> */}
-            <Landing />
-            <When />
-            <Map />
-            <BankAccount />
-            <PhotoGallery />
-            <GuestBook />
+            <Intro onEnd={() => setIntroEnd(true)} />
+            {introEnd && (
+                <>
+                    <Landing />
+                    <When />
+                    <Map />
+                    <BankAccount />
+                    <PhotoGallery />
+                    <GuestBook />
+                </>
+            )}
         </Layout>
     )
 }
