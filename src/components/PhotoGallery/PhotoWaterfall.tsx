@@ -73,7 +73,7 @@ function PhotoWaterfall({ items }: PhotoWaterfallProps) {
             spread()
             setTimeout(() => {
                 allowScroll()
-            }, 1000)
+            }, 2000)
         }
     }, [inView])
     return (
