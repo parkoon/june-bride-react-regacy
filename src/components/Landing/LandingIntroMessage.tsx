@@ -7,10 +7,10 @@ const Wrapper = styled.p`
 
     width: 100%;
 
-    font-size: 32px;
+    font-size: 28px;
     color: #fff;
     text-align: center;
-    line-height: 45px;
+    line-height: 42px;
     letter-spacing: 1px;
 
     font-weight: bold;
