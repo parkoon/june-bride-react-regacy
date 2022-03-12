@@ -6,10 +6,7 @@ import GuestBook from './components/GuestBook'
 import Intro from './components/Intro'
 import Landing from './components/Landing'
 import Layout from './components/Layout'
-// import Loading from './components/Loading'
-import Map from './components/Map'
 import PhotoGallery from './components/PhotoGallery'
-import When from './components/When'
 
 const EmptyBox = styled.div<{ opacity: number }>`
     height: 100vh;
@@ -26,8 +23,14 @@ function App() {
     if (env === 'dev') {
         return (
             <Layout>
-                <Intro onEnd={() => setIntroEnd(true)} />
-                {introEnd && <Landing />}
+                <Landing />
+
+                {/* <Intro onEnd={() => setIntroEnd(true)} />
+                {introEnd && <Landing />} */}
+                {/* <EmptyBox opacity={0.2} />
+                <EmptyBox opacity={0.2} />
+                <PhotoGallery /> */}
+
                 <EmptyBox opacity={0.2} />
                 <GuestBook />
                 <EmptyBox opacity={0.3} />
@@ -41,10 +44,10 @@ function App() {
             {introEnd && (
                 <>
                     <Landing />
-                    <When />
-                    <Map />
-                    <BankAccount />
+                    {/* <When /> */}
                     <PhotoGallery />
+                    {/* <Map /> */}
+                    <BankAccount />
                     <GuestBook />
                 </>
             )}
