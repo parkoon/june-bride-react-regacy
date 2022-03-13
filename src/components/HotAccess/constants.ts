@@ -4,6 +4,7 @@ import Accordion from '../@common/Accordion'
 export const variables = {
     hamburgerSize: '45px',
     contentWidth: '75vw',
+    contentHeight: '100vh',
     fixedPosition: '12px',
 }
 

@@ -9,13 +9,15 @@ const Wrapper = styled.div<Pick<HotAccessContentProps, 'active'>>`
     position: fixed;
     top: 0;
     right: 0;
-    height: 100vh;
+    height: ${variables.contentHeight};
     width: ${variables.contentWidth};
 
     background: #2b2e4a;
 
-    padding: calc(${variables.hamburgerSize} + ${variables.fixedPosition} * 2)
-        12px 20px 12px;
+    z-index: 999;
+
+    padding: 18px 12px
+        calc(${variables.hamburgerSize} + ${variables.fixedPosition} * 2) 12px;
 
     display: flex;
 
@@ -26,7 +28,7 @@ const Wrapper = styled.div<Pick<HotAccessContentProps, 'active'>>`
                     calc(${variables.hamburgerSize} / 2)
             )
             calc(
-                ${variables.fixedPosition} +
+                ${variables.contentHeight} - ${variables.fixedPosition} -
                     calc(${variables.hamburgerSize} / 2)
             )
     );

@@ -1,5 +1,7 @@
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
+import Close from '../../assets/svg/Close'
+import QuestionMark from '../../assets/svg/QuestionMark'
 import { variables } from './constants'
 
 const Wrapper = styled.div<Pick<HamburgerProps, 'active'>>`
@@ -8,11 +10,17 @@ const Wrapper = styled.div<Pick<HamburgerProps, 'active'>>`
     background: #2b2e4a;
     border-radius: 50%;
 
+    z-index: 9999;
+
     cursor: pointer;
 
     position: fixed;
-    top: ${variables.fixedPosition};
+    bottom: ${variables.fixedPosition};
     right: ${variables.fixedPosition};
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     span {
         height: 2px;
@@ -60,9 +68,11 @@ type HamburgerProps = {
 function Hamburger({ active, onClick }: HamburgerProps) {
     return (
         <Wrapper role="button" active={active} onClick={onClick}>
+            {active ? <Close /> : <QuestionMark />}
+
+            {/* <span />
             <span />
-            <span />
-            <span />
+            <span /> */}
         </Wrapper>
     )
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useScrollBlock } from '../../hooks/useScrollBlock'
 import Hamburger from './Hamburger'
 import HotAccessContent from './HotAccessContent'
+import Overlay from './Overlay'
 
 function HotAccess() {
     const [active, setActive] = useState(false)
@@ -20,6 +21,7 @@ function HotAccess() {
     }, [active])
     return (
         <>
+            {active && <Overlay />}
             <HotAccessContent
                 active={active}
                 onOutsideContentClick={handleOutsideClick}
