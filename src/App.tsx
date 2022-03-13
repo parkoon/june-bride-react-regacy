@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import { useState } from 'react'
 import BankAccount from './components/BankAccount'
 import GuestBook from './components/GuestBook'
+import HotAccess from './components/HotAccess'
 import Intro from './components/Intro'
 import Landing from './components/Landing'
 import Layout from './components/Layout'
@@ -23,17 +24,20 @@ function App() {
     if (env === 'dev') {
         return (
             <Layout>
-                <Landing />
-
+                <EmptyBox opacity={0.2} />
+                <HotAccess />
+                <EmptyBox opacity={0.4} />
+                <EmptyBox opacity={0.7} />
+                {/* <Accordion /> */}
+                {/* <Landing /> */}
                 {/* <Intro onEnd={() => setIntroEnd(true)} />
                 {introEnd && <Landing />} */}
                 {/* <EmptyBox opacity={0.2} />
                 <EmptyBox opacity={0.2} />
                 <PhotoGallery /> */}
-
-                <EmptyBox opacity={0.2} />
+                {/* <EmptyBox opacity={0.2} />
                 <GuestBook />
-                <EmptyBox opacity={0.3} />
+                <EmptyBox opacity={0.3} /> */}
             </Layout>
         )
     }
@@ -49,6 +53,7 @@ function App() {
                     {/* <Map /> */}
                     <BankAccount />
                     <GuestBook />
+                    <HotAccess />
                 </>
             )}
         </Layout>
